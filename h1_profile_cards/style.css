@@ -1,0 +1,196 @@
+/* style.css */
+
+/* 1. DEĞİŞKENLER: Tasarımın ana renklerini ve gölge gibi tekrarlayan değerlerini burada tanımlıyoruz. */
+:root {
+  --primary-color: #667eea; /* Ana renk: Lavanta mavisi */
+  --secondary-color: #764ba2; /* İkincil renk: Mor */
+  --text-color: #333; /* Ana metin rengi */
+  --bg-color: #f7fafc; /* Sayfa arka planı */
+  --card-bg: white; /* Kartın arka planı */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Yumuşak bir gölge efekti */
+}
+
+/* 2. SIFIRLAMA: Tüm öğelerin tarayıcıdan gelen varsayılan boşluklarını temizler. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Padding ve border'ı genişliğe dahil eder, hesaplamayı kolaylaştırır. */
+}
+
+/* 3. SAYFA GENELİ: Arka plana 135 derecelik şık bir gradyan ekler. */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  min-height: 100vh; /* Sayfanın en az ekran yüksekliği kadar olmasını sağlar. */
+  display: flex; /* İçeriği (kartı) hem yatayda hem dikeyde ortalamak için Flexbox. */
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 4. KART YAPISI */
+.card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  max-width: 800px;
+  width: 100%;
+  overflow: hidden; /* Köşelerin yuvarlaklığından taşan içerikleri gizler. */
+}
+
+/* Kartın Üst Bölümü (Gradyan alan) */
+.card-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+/* Profil Resmi: Yuvarlak ve beyaz çerçeveli. */
+.avatar {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 5px solid white;
+  object-fit: cover; /* Resmin oranını bozmadan alanı doldurmasını sağlar. */
+}
+
+/* Kart Gövdesi: Metinlerin olduğu alan. */
+.card-body {
+  padding: 30px;
+  text-align: center;
+}
+
+.name {
+  font-size: 56px;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.bio {
+  color: #666;
+  line-height: 1.8;
+  font-size: 24px;
+}
+
+/* 5. KART ALTI (FOOTER) VE İSTATİSTİKLER */
+.card-footer {
+  padding: 20px 30px 30px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around; /* İstatistikleri eşit aralıklarla dağıtır. */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.stat-label {
+  font-size: 24px;
+  color: #999;
+  margin-top: 5px;
+}
+
+/* Sosyal Linkler */
+.social-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap; /* Mobilde linkler sığmazsa alt alta geçer. */
+}
+
+.social-link {
+  padding: 10px 20px;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 28px;
+  transition:
+    transform 0.3s,
+    background 0.3s; /* Etkileşim efektini yumuşatır. */
+}
+
+.social-link:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px); /* Fareyle gelince hafifçe yukarı zıplar. */
+}
+
+/* --- DUYARLILIK MEYDAN OKUMASI (RESPONSIVE SOLUTION) --- */
+
+/* Tablet ve Küçük Masaüstü Ekranları (800px altı) */
+@media (max-width: 800px) {
+  .name {
+    font-size: 42px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .stat-number {
+    font-size: 36px;
+  }
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Mobil Ekranlar (600px altı) */
+@media (max-width: 600px) {
+  .stats {
+    flex-direction: column; /* İstatistikleri yan yana yerine alt alta dizer. */
+    gap: 20px;
+  }
+
+  .name {
+    font-size: 32px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .bio {
+    font-size: 18px;
+  }
+
+  .social-link {
+    font-size: 20px;
+    width: 100%; /* Mobilde butonları tam genişlik yapar. */
+    text-align: center;
+  }
+}
+
+/*
+.social-link img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+*/

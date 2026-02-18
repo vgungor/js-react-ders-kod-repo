@@ -1,0 +1,148 @@
+/* gallery.css */
+
+/* 1. DEĞİŞKENLER: Renkleri tek bir merkezden yönetmemizi sağlar. 
+   Değişiklik yapmak istediğinde sadece burayı güncellemen yeterli olur. */
+:root {
+  --primary: #2c3e50; /* Koyu lacivert - Başlık ve Alt bilgi için */
+  --accent: #3498db; /* Parlak mavi - Etkileşimler için */
+  --text: #333; /* Koyu gri - Okunabilirlik için */
+  --bg: #ecf0f1; /* Çok açık gri - Arka plan için */
+}
+
+/* 2. SIFIRLAMA: Tarayıcıların varsayılan boşluklarını kaldırır. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Padding ve border değerlerini genişliğe dahil eder. */
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* 3. ÜST BİLGİ (HEADER) */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 1rem;
+}
+
+/* 4. NAVİGASYON: Flexbox kullanarak menü öğelerini hizalıyoruz. */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* Küçük ekranlarda menü öğelerinin alt alta geçmesini sağlar. */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background 0.3s; /* Renk geçişini yumuşatır. */
+}
+
+nav a:hover {
+  background: var(--accent);
+}
+
+/* 5. GALERİ IZGARASI (GRID): En önemli kısım burası. */
+.gallery {
+  display: grid;
+  /* auto-fit ve minmax: Ekran genişliğine göre sütun sayısını OTOMATİK ayarlar. 
+     Resimler en az 300px olur, yer varsa yan yana dizilir. */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto; /* Galeriyi sayfada ortalar. */
+}
+
+/* 6. GALERİ ÖĞESİ VE GÖRSEL EFEKTLER */
+.gallery-item {
+  position: relative; /* İçindeki 'overlay' katmanını buna göre konumlandıracağız. */
+  overflow: hidden; /* Resim büyüdüğünde kutunun dışına taşmasını engeller. */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* Resmi ezmeden kutuya sığdırır. */
+  display: block;
+  transition: transform 0.5s; /* Zoom efektinin süresi. */
+}
+
+/* Fare üzerine geldiğinde resmi %10 büyütür. */
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* 7. OVERLAY (BİLGİ KATMANI): Başlangıçta görünmezdir (translateY 100%). */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.8)
+  ); /* Alttan koyu gölge. */
+  color: white;
+  padding: 2rem 1rem 1rem;
+  transform: translateY(100%); /* Aşağıda gizle. */
+  transition: transform 0.3s;
+}
+
+/* Kartın üzerine gelince bilgileri yukarı kaydırarak göster. */
+.gallery-item:hover .overlay {
+  transform: translateY(0);
+}
+
+.overlay h3 {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* 8. DUYARLI KIRILMA NOKTALARI (RESPONSIVE BREAKPOINTS) */
+/* Tabletler için ayarlar (768px altı) */
+@media (max-width: 768px) {
+  .gallery {
+    /* Resimlerin minimum genişliğini küçülterek daha iyi sığmalarını sağlıyoruz. */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  nav {
+    gap: 0.5rem;
+  }
+}
+
+/* Telefonlar için ayarlar (480px altı) */
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /* Mobilde her resim tam satır kaplasın. */
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+}

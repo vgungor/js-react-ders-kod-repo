@@ -1,0 +1,219 @@
+/* --- DEĞİŞKENLER VE TEMEL AYARLAR --- */
+
+:root {
+  --primary: #6f4e37; /* Ana tema rengi: Kahve tonu */
+  --secondary: #c7a17a; /* İkincil renk: Sütlü kahve/vurgu rengi */
+  --text: #333; /* Metin rengi: Koyu gri (tam siyah yerine daha yumuşak) */
+  --light: #f5f5f5; /* Arka plan rengi: Çok açık gri */
+  --white: #ffffff; /* Saf beyaz renk */
+}
+
+* {
+  margin: 0; /* Tüm elementlerin dış boşluklarını sıfırla */
+  padding: 0; /* Tüm elementlerin iç boşluklarını sıfırla */
+  box-sizing: border-box; /* Padding ve border değerlerini genişliğe dahil et (hesap kolaylığı) */
+}
+
+html {
+  scroll-behavior: smooth; /* Sayfa içi linklere tıklandığında kayma efekti ver */
+}
+
+body {
+  font-family: "Segoe UI", sans-serif; /* Modern ve okunaklı yazı tipi ailesi */
+  line-height: 1.6; /* Satır arası boşluğu (okunabilirlik için) */
+  color: var(--text); /* Varsayılan metin rengini değişkenden al */
+  background-color: var(--light); /* Sayfa arka plan rengini değişkenden al */
+}
+
+/* --- NAVIGASYON (ÜST MENÜ) --- */
+
+.navbar {
+  background: var(--white); /* Menü arka planı beyaz */
+  height: 80px; /* Menü yüksekliği sabit 80 piksel */
+  display: flex; /* İçerikleri hizalamak için Flexbox kullan */
+  align-items: center; /* İçerikleri dikeyde ortala */
+  position: sticky; /* Sayfa kaydırılsa bile üstte sabit kal */
+  top: 0; /* Sayfanın en üstüne yapıştır */
+  z-index: 1000; /* Diğer elementlerin her zaman üstünde kalsın */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Hafif bir gölge efekti */
+}
+
+.nav-container {
+  width: 90%; /* Ekranın %90'ını kapla */
+  max-width: 1200px; /* Maksimum genişliği 1200 piksel ile sınırla */
+  margin: 0 auto; /* Sağdan ve soldan otomatik boşluk vererek ortala */
+  display: flex; /* Logo ve menüyü hizalamak için Flexbox */
+  justify-content: space-between; /* Logo sola, menü sağa yaslansın */
+  align-items: center; /* Dikeyde hizala */
+}
+
+.logo {
+  font-size: 1.5rem; /* Logonun yazı boyutu */
+  font-weight: bold; /* Kalın yazı tipi */
+  color: var(--primary); /* Kahve tonu rengi */
+}
+
+.nav-menu {
+  display: flex; /* Menü öğelerini yan yana diz */
+  list-style: none; /* Liste noktalarını kaldır */
+  gap: 2rem; /* Öğeler arasına 2 birim boşluk bırak */
+}
+
+.nav-menu a {
+  text-decoration: none; /* Alt çizgiyi kaldır */
+  color: var(--text); /* Link rengini koyu gri yap */
+  font-weight: 500; /* Yazı kalınlığını orta seviyeye getir */
+  transition: color 0.3s; /* Renk değişimini 0.3 saniyeye yay */
+}
+
+.nav-menu a:hover {
+  color: var(--primary); /* Fare üzerine gelince kahve rengine dön */
+}
+
+.hamburger {
+  display: none; /* Hamburger menüyü büyük ekranlarda gizle */
+  cursor: pointer; /* Üzerine gelince el imleci göster */
+}
+
+/* --- HERO SECTION (KAPAK ALANI) --- */
+
+.hero {
+  height: 100vh; /* Ekranın %100 yüksekliğini kapla */
+  /* Arka plana karartma gradyanı ve görsel ekle */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1920")
+      no-repeat center center/cover;
+  display: flex; /* İçeriği ortalamak için Flexbox */
+  justify-content: center; /* Yatayda tam ortala */
+  align-items: center; /* Dikeyde tam ortala */
+  text-align: center; /* Metinleri merkezle */
+  color: var(--white); /* Yazı rengini beyaz yap */
+}
+
+.hero-content h1 {
+  font-size: 3.5rem; /* Manşet yazı boyutu */
+  margin-bottom: 1rem; /* Altındaki paragraftan uzaklaştır */
+}
+
+.cta-button {
+  padding: 1rem 2rem; /* Buton içi boşluk */
+  font-size: 1.1rem; /* Buton yazı boyutu */
+  background: var(--primary); /* Buton rengini kahve yap */
+  color: var(--white); /* Yazı beyaz */
+  border: none; /* Kenarlıkları kaldır */
+  border-radius: 50px; /* Kenarları tam yuvarlak yap */
+  cursor: pointer; /* El imleci göster */
+  transition:
+    transform 0.3s,
+    background 0.3s; /* Efekt geçiş süresi */
+}
+
+.cta-button:hover {
+  background: var(--secondary); /* Üzerine gelince sütlü kahve rengi yap */
+  transform: scale(1.05); /* Hafifçe (%5) büyüt */
+}
+
+/* --- İÇERİK KONTEYNER VE IZGARALAR --- */
+
+.container {
+  max-width: 1200px; /* Maksimum genişlik sınırı */
+  margin: 0 auto; /* Ortala */
+  padding: 5rem 2rem; /* Üstten ve alttan geniş boşluk (nefes alma alanı) */
+}
+
+h2 {
+  text-align: center; /* Başlığı ortala */
+  margin-bottom: 3rem; /* Altındaki içerikten uzaklaştır */
+  font-size: 2.5rem; /* Başlık boyutu */
+  color: var(--primary); /* Kahve rengi başlık */
+}
+
+/* Özellikler Kart Izgarası (Grid) */
+.features-grid {
+  display: grid; /* Grid (Izgara) sistemini kullan */
+  /* Sütunları otomatik ayarla: En az 250px olsunlar, yer varsa yan yana sığdır */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem; /* Kartlar arası boşluk */
+}
+
+.feature-card {
+  background: var(--white); /* Kart arka planı beyaz */
+  padding: 2rem; /* Kart içi boşluk */
+  text-align: center; /* İçeriği ortala */
+  border-radius: 15px; /* Köşeleri yumuşat */
+  transition: transform 0.3s; /* Hareket efektini yumuşat */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px); /* Üzerine gelince 10 piksel yukarı kaysın */
+}
+
+.icon {
+  font-size: 3rem; /* İkon boyutu */
+  margin-bottom: 1rem; /* İkon ve başlık arası mesafe */
+}
+
+/* --- İLETİŞİM FORMU --- */
+
+.contact-grid {
+  display: grid; /* Grid sistemi kullan */
+  grid-template-columns: 1fr 1fr; /* Yanyana iki eşit sütun (Masaüstü için) */
+  gap: 4rem; /* Bilgiler ve form arası mesafe */
+}
+
+.contact-form {
+  display: flex; /* Form elemanlarını hizala */
+  flex-direction: column; /* Elemanları alt alta diz */
+  gap: 1rem; /* Elemanlar arası boşluk */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem; /* Yazım alanı içi boşluk */
+  border: 1px solid #ddd; /* İnce gri kenarlık */
+  border-radius: 5px; /* Hafif yuvarlak köşeler */
+}
+
+.contact-form button {
+  padding: 1rem; /* Buton içi boşluk */
+  background: var(--primary); /* Buton kahve rengi */
+  color: white; /* Yazı beyaz */
+  border: none; /* Kenarlık yok */
+  border-radius: 5px; /* Hafif yuvarlak köşeler */
+  cursor: pointer; /* El imleci */
+}
+
+/* --- RESPONSIVE (DUYARLI) TASARIM --- */
+
+/* 768 pikselden küçük ekranlar (Tablet ve Telefon) */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none; /* Menü öğelerini gizle (Hamburger menü için) */
+  }
+
+  .hamburger {
+    display: block; /* Hamburger simgesini görünür yap */
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem; /* Mobilde başlık boyutunu küçült */
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr; /* Yan yana duran yapıları alt alta (tek sütun) al */
+  }
+
+  .about-image img {
+    width: 100%; /* Resmin ekranı kaplamasını sağla */
+    margin-top: 2rem; /* Metinden sonra boşluk bırak */
+  }
+}
+
+footer {
+  text-align: center; /* Metni ortala */
+  padding: 2rem; /* İç boşluk */
+  background: var(--primary); /* Kahve arka plan */
+  color: white; /* Beyaz yazı */
+}
