@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* Evrensel Seçici: Tüm margin ve padding değerlerini sıfırlar [cite: 233, 236] */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* ID Seçicisi: Sadece bu benzersiz başlığı etkiler [cite: 212, 214] */
+      #ana-baslik {
+        text-align: center;
+        color: darkblue;
+      }
+
+      /* Class Seçicisi: Birden fazla butona uygulanabilir [cite: 216, 218] */
+      .buton {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        border-radius: 5px; /* Köşeleri yuvarlatır [cite: 301] */
+      }
+
+      /* Pseudo-class: Fare üzerine geldiğinde rengi koyulaştırır [cite: 237, 240, 250] */
+      .buton:hover {
+        background-color: darkblue;
+        cursor: pointer;
+      }
+
+      /* Responsive Tasarım: Ekran 768px'den küçükse (Tablet/Telefon) çalışır [cite: 338, 347, 352] */
+      @media (max-width: 768px) {
+        #ana-baslik {
+          font-size: 18px;
+        } /* Yazıyı küçültür [cite: 284] */
+        .buton {
+          width: 100%;
+        } /* Butonu tam genişlik yapar [cite: 297] */
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="ana-baslik">CSS Dünyasına Hoş Geldiniz</h1>
+    <button class="buton">Tıkla ve Gör</button>
+    <script src="script.js"></script>
+  </body>
+</html>

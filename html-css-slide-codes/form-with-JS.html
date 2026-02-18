@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script>
+      // Butona tıklandığında çalışacak fonksiyon [cite: 139, 147]
+      function Goster(deger) {
+        alert("Girdiğiniz metin: " + deger); // Uyarı kutusu çıkarır [cite: 140, 148]
+      }
+    </script>
+
+    <form name="jsForm">
+      <input
+        type="text"
+        name="mesaj"
+        onfocus="this.style.background = 'yellow'"
+        value="Buraya yazın"
+      />
+
+      <input
+        type="button"
+        value="Mesajı Oku"
+        onclick="Goster(jsForm.mesaj.value)"
+      />
+
+      <p onmouseover="this.style.color = 'red'">
+        Üzerime gelince rengim değişir!
+      </p>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>

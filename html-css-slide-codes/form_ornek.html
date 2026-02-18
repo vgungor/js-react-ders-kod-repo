@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form action="/kayit.php" method="POST">
+      <label for="ad">Adınız:</label><br />
+      <input
+        type="text"
+        id="ad"
+        name="ad"
+        placeholder="Adınızı girin"
+        required
+      /><br />
+
+      <label for="sifre">Şifre:</label><br />
+      <input type="password" id="sifre" name="sifre" /><br />
+
+      <input type="date" name="dogum_tarihi" /><br />
+
+      <input type="file" name="dosya" /><br />
+
+      <input type="submit" value="Bilgileri Gönder" />
+      <input type="reset" value="Temizle" />
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
