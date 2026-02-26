@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Veri Tipleri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      // --- Sayısal (Numeric) ---
+      let sayi = 35;
+      console.log("Değer:", sayi, "| Türü:", typeof sayi); // number
+
+      let buyukSayi = 9007199254740991n;
+      console.log("Değer:", buyukSayi, "| Türü:", typeof buyukSayi); // bigint
+
+      // --- Sayısal Olmayan (Non-Numeric) ---
+      let metin = "İzmir Dokuz Eylül";
+      console.log("Değer:", metin, "| Türü:", typeof metin); // string
+
+      let dogruMu = true;
+      console.log("Değer:", dogruMu, "| Türü:", typeof dogruMu); // boolean
+
+      let bos = null;
+      console.log("Değer:", bos, "| Türü:", typeof bos); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
+
+      let tanimsiz;
+      console.log("Değer:", tanimsiz, "| Türü:", typeof tanimsiz); // undefined
+
+      let nullDeger = null;
+      console.log("Değer:", nullDeger, "| Türü:", typeof nullDeger); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
+
+      // Standart Obje (Anahtar-Değer Çifti)
+      let hoca = { ad: "Volkan", meslek: "Solution Architect" };
+      console.log("Obje:", hoca, "| Türü:", typeof hoca); // object
+
+      // Array (Dizi / Liste)
+      let diller = ["JavaScript", "PHP", "Java"];
+      console.log("Dizi:", diller, "| Türü:", typeof diller); // object (Diziler de birer objedir!)
+
+      // Function (Fonksiyon)
+      let selamVer = function () {
+        return "Merhaba!";
+      };
+      console.log("Fonksiyon:", selamVer, "| Türü:", typeof selamVer); // function
+
+      // Date (Tarih)
+      let bugun = new Date();
+      console.log("Tarih:", bugun, "| Türü:", typeof bugun); // object
+
+      // RegExp (Düzenli İfade)
+      let desen = /[a-z]/;
+      console.log("Desen:", desen, "| Türü:", typeof desen); // object
+
+      //Object
+      let ogrenci = {
+        isim: "Mustafa",
+        yas: 20,
+        aktifMi: true,
+      };
+      console.log(ogrenci);
+
+      document.write("<h2>Veri Türleri</h2>");
+      document.write(
+        "<p>JavaScript'te veri türleri, programın çalışması sırasında kullanılan verilerin türünü belirler. JavaScript'te temel veri türleri şunlardır:</p>",
+      );
+      document.write("<ul>");
+      document.write(
+        "<li><strong>Number:</strong> Sayısal değerleri temsil eder. Örneğin: 42, 3.14</li>",
+      );
+      document.write(
+        "<li><strong>String:</strong> Metin değerlerini temsil eder. Örneğin: 'Merhaba', \"Dünya\"</li>",
+      );
+      document.write(
+        "<li><strong>Boolean:</strong> Doğru (true) veya yanlış (false) değerlerini temsil eder. Örneğin: true, false</li>",
+      );
+      document.write(
+        "<li><strong>Null:</strong> Bilinçli olarak boş bir değeri temsil eder. Örneğin: null</li>",
+      );
+      document.write(
+        "<li><strong>Undefined:</strong> Değeri tanımlanmamış bir değişkeni temsil eder. Örneğin: undefined</li>",
+      );
+      document.write(
+        "<li><strong>Object:</strong> Anahtar-değer çiftlerini içeren karmaşık veri yapılarıdır. Örneğin: { ad: 'Volkan', meslek: 'Solution Architect' }</li>",
+      );
+      document.write(
+        "<li><strong>Array:</strong> Sıralı veri koleksiyonlarını temsil eder. Örneğin: ['JavaScript', 'PHP', 'Java']</li>",
+      );
+      document.write(
+        "<li><strong>Function:</strong> Fonksiyonları temsil eder. Örneğin: function selamVer() { return 'Merhaba!'; }</li>",
+      );
+      document.write("</ul>");
+
+      let isim = "Volkan";
+      let yas = 35;
+      document.write("Merhaba <b>" + isim + "</b>, Yaşın: " + yas + "<br>");
+      document.write("<br>");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Konsoldan çıktı almak</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h2>Değişkenler</h2>
+    <p style=" max-width: fit-content ;">
+      Değişkenler, programlama dillerinde 
+      veri saklamak için kullanılan isimlendirilmiş alanlardır.
+      Değişkenler, programın çalışması sırasında değerlerini değiştirebilirler.
+         Değişkenler, genellikle bir türle ilişkilendirilirler ve bu tür, değişkenin saklayabileceği veri türünü belirler.
+         JavaScript'te değişkenler, var, let veya const anahtar kelimeleri kullanılarak tanımlanabilirler.
+         Örneğin:
+    </p>
+      <script>
+        //---------------VAR----------------
+        //var anahtar kelimesiyle bir değişken tanımlayalım
+        var sehir = "İzmir";
+        console.log(sehir); // Output: "İzmir"
+        var sehir = "İstanbul"; // JS burada "Hayırdır ne yapıyorsun?" demez, direkt değiştirir.
+        console.log(sehir); // Output: "İstanbul"
+
+        //var yapısı gereği, aynı isimle birden fazla değişken tanımlanabilir ve bu durumda son tanımlanan değer geçerli olur.        
+        //KAPSAM
+        var freespirit = "Ben VARım ve bu evde istediğim yere gidebilirim!"; //GLOBAL TANIMLI DEĞİŞKEN
+        function evKapsam() {     
+            console.log(freespirit); 
+            // Output: "Ben VARım ve bu evde istediğim yere gidebilirim!"
+            //var her yerden erişilebilir, fonksiyon kapsamına sahiptir.
+
+            var roomspirit = "Ama ben de VARım ve sadece evKapsam fonksiyonun içinde varım!";
+            if (true) {
+                var blockspirit = "Ben de VARım ama sadece evKapsam fonksiyonu if bloğun içinde varım!";
+                console.log(blockspirit); // Output: "Ben de VARım ama sadece bu bloğun içinde varım!"
+            }
+            console.log(roomspirit); // Output: "Ama ben de VARım ve sadece evKapsam fonksiyonun içinde varım!"
+        }
+
+        // Yorumları kaldırarak deneyizini yapabilirsiniz:!!!
+        console.log(freespirit); // Çıktı! en dışyta tanımlı oludğu için her yerden erişilebilir.
+        // console.log(blockspirit); // Error!: "Ben de VARım ama sadece bu bloğun içinde varım!"
+        // console.log(roomspirit); // Error!: "Ama ben de VARım ve sadece bu
+        evKapsam(); // Fonksiyonu çağırarak içindeki kodu çalıştırıyoruz.
+      </script>
+
+      <script>
+        console.log("---------------LET----------------");
+        //---------------LET----------------
+        let ogrenciNotu = 85;
+        console.log(ogrenciNotu); // Output: 85
+        ogrenciNotu = 90; // İçindeki değeri güncelleyebilirsiniz (Serbest).
+        // let ogrenciNotu = 100; // HATA! "Zaten tanımlı" diye bağırır.
+        console.log(ogrenciNotu); // Output: 90
+
+        let evInsani = "Ben evInsani LET'im ve sadece bu scope içinde varım!"; //GLOBAL TANIMLI DEĞİŞKEN
+        console.log(evInsani); // Output: "Ben evInsani LET'im ve sadece bu scope içinde varım!"
+        function odaKapsam() {
+
+            let odadaKal = "Ben LET'im ve sadece bu fonksiyonun içinde varım!"; //FONKSİYON KAPSAMLI DEĞİŞKEN
+            const odadaSabitKal = "Ben CONST'im ve sadece bu fonksiyonun içinde varım!";
+                
+            console.log(odadaKal); // Çalışır, çünkü odaKapsam fonksiyonu içinde tanımlı
+            console.log(odadaSabitKal); // Çalışır, çünkü odaKapsam fonksiyonu içinde tanımlı        
+            
+            }
+        // console.log(odadaKal); // Error! Can't access outside the block
+        // console.log(odadaSabitKal); // Error! Can't access outside the block
+        odaKapsam(); // Fonksiyonu çağırarak içindeki kodu çalıştırıyoruz.
+        console.log(evInsani); 
+        
+      </script>
+      <script>
+        console.log("---------------CONST----------------");
+        //---------------CONST----------------
+        const PI = 3.14;
+        console.log(PI); // Output: 3.14
+        // PI = 3.14159; // HATA! "Değiştirilemez" diye bağırır.
+        console.log(PI); // Output: 3.14
+
+        const sabitEvInsani = "Ben sabitEvInsani CONST'um ve sadece bu scope içinde varım!"; //GLOBAL TANIMLI DEĞİŞKEN
+        console.log(sabitEvInsani); // Output: "Ben sabitEvInsani CONST'um ve sadece bu scope içinde varım!"
+      </script>
+
+      <script>
+        console.log("---------------VAR Hoisting / LET tanımlama hatası----------------");
+        //---------------VAR Hoisting / LET tanımlama hatası----------------
+        //var tanımlı olmazsa undefind verir ve tanımlı olsa bile tanımlama satırına kadar erişilebilir olur. (Hoisting)
+        console.log(a);
+        var a = 5;
+        console.log(a);
+
+
+        // ReferenceError hatası verir. LET ve CONST tanımlama satırına kadar erişilebilir olmaz, tanımlama satırına gelindiğinde tanımlanır ve kullanılabilir hale gelir.
+        console.log(b); 
+        let b = 5;
+        console.log(b); 
+
+      </script>
+    </p>
+  </body>
+</html>

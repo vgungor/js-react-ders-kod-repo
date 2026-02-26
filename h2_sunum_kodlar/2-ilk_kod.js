@@ -1,0 +1,12 @@
+var i = 10;
+var j = 5;
+
+var carpma = i * j;
+var toplama = i + j;
+var bolme = i / j;
+var kalan = i % j;
+
+console.log("carpma: " + carpma);
+console.log("toplama: " + toplama);
+console.log("bolme: " + bolme);
+console.log("kalan: " + kalan);
