@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nested If Örneği</title>
+  </head>
+  <body>
+    <script>
+      let yas = prompt("Lütfen yaşınızı giriniz:");
+      yas = Number(yas);
+
+      if (isNaN(yas)) {
+        document.write("Lütfen geçerli bir sayı giriniz.");
+      } else if (yas >= 18) {
+        let kursKayit = prompt("Sürücü kursuna kayıtlı mısınız? (evet/hayır)");
+        if (kursKayit.toLowerCase() === "evet") {
+          document.write("Ehliyet alabilirsiniz.");
+        } else {
+          document.write("Önce sürücü kursuna kayıt olun.");
+        }
+      } else {
+        document.write("Ehliyet alamazsınız.");
+      }
+    </script>
+  </body>
+</html>

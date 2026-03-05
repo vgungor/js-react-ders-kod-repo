@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Not Değerlendirme</title>
+  </head>
+  <body>
+    <script>
+      let not = prompt("Lütfen sınav notunuzu giriniz:");
+      not = Number(not);
+
+      if (isNaN(not) || not < 0 || not > 100) {
+        document.write("Hatalı not girdiniz.");
+      } else if (not >= 90) {
+        document.write("AA");
+      } else if (not >= 70) {
+        document.write("BB");
+      } else if (not >= 50) {
+        document.write("CC");
+      } else {
+        document.write("FF");
+      }
+    </script>
+  </body>
+</html>

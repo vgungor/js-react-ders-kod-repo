@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nested If Örneği</title>
+  </head>
+  <body>
+    <script>
+      let kullaniciAdi = "admin";
+      let sifre = "1234";
+
+      if (kullaniciAdi === "admin") {
+        if (sifre === "1234") {
+          console.log("Giriş başarılı.");
+        } else {
+          console.log("Şifre hatalı.");
+        }
+      } else {
+        console.log("Kullanıcı adı bulunamadı.");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let yas = 22;
+      let ogrenciMi = true;
+      let biletFiyatı = 100;
+
+      if (yas < 12) {
+        biletFiyatı = biletFiyatı * 0.5; // %50 indirim
+        console.log("Çocuk bileti uygulandı.");
+      } else if (yas >= 12 && yas <= 25 && ogrenciMi === true) {
+        biletFiyatı = biletFiyatı * 0.7; // %30 genç öğrenci indirimi
+        console.log("Genç öğrenci bileti uygulandı.");
+      } else if (yas >= 65) {
+        biletFiyatı = biletFiyatı * 0.6; // %40 yaşlı indirimi
+        console.log("65+ indirim uygulandı.");
+      } else {
+        console.log("Tam bilet uygulandı.");
+      }
+
+      console.log("Ödemeniz gereken tutar: " + biletFiyatı + " TL");
+    </script>
+  </body>
+</html>

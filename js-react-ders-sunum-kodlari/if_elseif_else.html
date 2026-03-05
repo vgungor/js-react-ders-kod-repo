@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <h3>Hava Durumu Değerlendirme</h3>
+    <h4>Girilen Derece ile hesaplama yapar ancak metin girince hata verir</h4>
+    <script>
+      let derece = prompt("Lütfen hava sıcaklığını giriniz (°C):");
+
+      derece = Number(derece); // string → number dönüşümü
+      document.write("Girilen derece: " + derece + "°C<br>");
+
+      if (derece < 0) {
+        document.write("Hava dondurucu.");
+      } else if (derece >= 0 && derece < 20) {
+        document.write("Hava serin.");
+      } else if (derece >= 20 && derece < 35) {
+        document.write("Hava ideal.");
+      } else {
+        document.write("Hava çok sıcak.");
+      }
+    </script>
+
+    <h4>
+      Girilen Derece ile hesaplama yapar, metin girişini isNAN ile kontrol eder
+    </h4>
+    <script>
+      document.write("Girilen derece: " + derece + "°C<br>");
+      if (isNaN(derece)) {
+        document.write("Lütfen geçerli bir sayı giriniz.");
+      } else if (derece < 0) {
+        document.write("Hava dondurucu.");
+      } else if (derece < 20) {
+        document.write("Hava serin.");
+      } else if (derece < 35) {
+        document.write("Hava ideal.");
+      } else {
+        document.write("Hava çok sıcak.");
+      }
+    </script>
+  </body>
+</html>

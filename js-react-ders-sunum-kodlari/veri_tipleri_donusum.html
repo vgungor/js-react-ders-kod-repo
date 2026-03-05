@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let ondalik = "123.45";
+
+      console.log(Number(ondalik)); // 123.45
+      console.log(parseInt(ondalik)); // 123 (Ondalığı atar)
+
+      let tamSayi = "123";
+      console.log("floatSayi: " + parseFloat(tamSayi)); // 123
+      console.log(typeof parseFloat(tamSayi)); // "number"
+      console.log(
+        "strSayi: " +
+          tamSayi.toString() +
+          "\ntype: " +
+          typeof tamSayi.toString(),
+      ); // 123
+    </script>
+
+    <script>
+      console.log("Boolean türüne dönüştürme:");
+      console.log(Boolean("Volkan")); // true
+      console.log(Boolean("false")); // true (non-empty string)
+      console.log(Boolean(0)); // false
+      console.log(Boolean(123.98)); // true
+      console.log(Boolean(12)); // true
+
+      console.log("her zaman FALSE olan değerler:");
+      console.log(Boolean(0)); // 0
+      console.log(Boolean("")); // boş string
+      console.log(Boolean(null)); // null
+      console.log(Boolean(undefined)); // undefined
+      console.log(Boolean(NaN)); // NaN
+    </script>
+  </body>
+</html>

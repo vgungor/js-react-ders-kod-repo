@@ -9,26 +9,26 @@
     <script type="text/javascript">
       // --- Sayısal (Numeric) ---
       let sayi = 35;
-      console.log("Değer:", sayi, "| Türü:", typeof sayi); // number
+      console.log("sayi:", sayi, "| Türü:", typeof sayi); // number
 
       let buyukSayi = 9007199254740991n;
-      console.log("Değer:", buyukSayi, "| Türü:", typeof buyukSayi); // bigint
+      console.log("buyukSayi:", buyukSayi, "| Türü:", typeof buyukSayi); // bigint
 
       // --- Sayısal Olmayan (Non-Numeric) ---
       let metin = "İzmir Dokuz Eylül";
-      console.log("Değer:", metin, "| Türü:", typeof metin); // string
+      console.log("metin:", metin, "| Türü:", typeof metin); // string
 
       let dogruMu = true;
-      console.log("Değer:", dogruMu, "| Türü:", typeof dogruMu); // boolean
+      console.log("dogruMu:", dogruMu, "| Türü:", typeof dogruMu); // boolean
 
       let bos = null;
-      console.log("Değer:", bos, "| Türü:", typeof bos); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
+      console.log("bos:", bos, "| Türü:", typeof bos); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
 
       let tanimsiz;
-      console.log("Değer:", tanimsiz, "| Türü:", typeof tanimsiz); // undefined
+      console.log("tanimsiz:", tanimsiz, "| Türü:", typeof tanimsiz); // undefined
 
       let nullDeger = null;
-      console.log("Değer:", nullDeger, "| Türü:", typeof nullDeger); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
+      console.log("nullDeger:", nullDeger, "| Türü:", typeof nullDeger); // object* (Dikkat: JS'in meşhur hatasıdır, aslında null'dur)
 
       // Standart Obje (Anahtar-Değer Çifti)
       let hoca = { ad: "Volkan", meslek: "Solution Architect" };
@@ -36,7 +36,7 @@
 
       // Array (Dizi / Liste)
       let diller = ["JavaScript", "PHP", "Java"];
-      console.log("Dizi:", diller, "| Türü:", typeof diller); // object (Diziler de birer objedir!)
+      console.log("diller Dizi:", diller, "| Türü:", typeof diller); // object (Diziler de birer objedir!)
 
       // Function (Fonksiyon)
       let selamVer = function () {
@@ -59,6 +59,24 @@
         aktifMi: true,
       };
       console.log(ogrenci);
+
+      console.log("-----SET-----");
+      let set = new Set();
+      set.add("değer1");
+      set.add("değer2");
+      set.add("değer3");
+      console.log("Set:", set, "| Türü:", typeof set);
+      set.add("değer2"); /* Set'e aynı değeri eklemeye çalıştığımızda,
+       zaten var olduğu için eklenmez.*/
+      console.log("Set (Tekrar ekleme denemesi sonrası):", set);
+
+      console.log("-----MAP-----");
+      let map = new Map();
+      map.set("key1", "value1");
+      map.set("key2", "value2");
+      map.set("key3", "value3");
+      console.log("Map:", map, "| Türü:", typeof map);
+      console.log("Map'ten key2'nin değeri:", map.get("key2")); // value2
 
       document.write("<h2>Veri Türleri</h2>");
       document.write(

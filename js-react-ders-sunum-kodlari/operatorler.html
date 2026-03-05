@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      // Operatörler
+      console.log("-----Aritmetik Operatörler-----");
+      let a = 10;
+      let b = 5;
+      let c = a + b;
+      console.log("Toplam:", c);
+
+      let d = a - b;
+      console.log("Fark:", d);
+
+      let e = a * b;
+      console.log("Çarpım:", e);
+
+      let f = a / b;
+      console.log("Bölüm:", f);
+
+      let g = a % b;
+      console.log("Kalan:", g);
+
+      console.log("-----Atama Operatörleri-----");
+      let x = 10;
+      console.log("x:", x);
+      x += 5; // x = x + 5
+      console.log("x += 5:", x);
+      x -= 3; // x = x - 3
+      console.log("x -= 3:", x);
+      x *= 2; // x = x * 2
+      console.log("x *= 2:", x);
+      x /= 4; // x = x / 4
+      console.log("x /= 4:", x);
+      x++; // x = x + 1
+      console.log("x++:", x);
+      x--; // x = x - 1
+      console.log("x--:", x);
+      --x; // x = x - 1
+      console.log("--x:", x);
+
+      console.log("-----Karşılaştırma Operatörleri-----");
+      console.log("a == b:", a == b); // Eşit mi?
+      console.log("a != b:", a != b); // Eşit değil mi?
+      console.log("a > b:", a > b); // Büyük mü?
+      console.log("a < b:", a < b); // Küçük mü?
+      console.log("a >= b:", a >= b); // Büyük veya eşit mi?
+      console.log("a <= b:", a <= b); // Küçük veya eşit
+      console.log("a === b:", a === b); // Denk mi?
+      console.log("a !== b:", a !== b); // Denk değil mi?
+
+      console.log("-----Mantıksal Operatörler-----");
+      let p = true;
+      let q = false;
+      console.log("p && q:", p && q); // Mantıksal VE
+      console.log("p || q:", p || q); // Mantıksal VEYA
+      console.log("!p:", !p); // Mantıksal DEĞİL
+
+      console.log("-----Diğer Operatörler-----");
+      console.log("----Koşul (Ternary) Operatörü-----");
+      let sonuc = a > b ? "a büyüktür" : "b büyüktür";
+      console.log("Ternary Operatör Sonucu:", sonuc);
+
+      console.log("----Nokta Operatörü-----");
+      let ogrenci = { ad: "Ahmet", yas: 20 };
+      console.log("ogrenci.ad:", ogrenci.ad); // Nokta operatörü ile nesne özelliğine erişim
+      console.log("ogrenci['yas']:", ogrenci["yas"]); // Köşeli parantez operatörü ile nesne özelliğine erişim
+      console.log("typeof ogrenci:", typeof ogrenci); // Tür operatörü
+      let sayi = 42;
+      console.log("sayi:", sayi, "| Türü:", typeof sayi); // typeof operatörü ile tür kontrolü
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Switch-Case Örneği</title>
+  </head>
+  <body>
+    <script>
+      let gun = prompt("Lütfen gün numarasını giriniz (1-7):");
+      gun = Number(gun);
+
+      switch (gun) {
+        case 1:
+          document.write("Pazartesi");
+          break;
+        case 2:
+          document.write("Salı");
+          break;
+        case 3:
+          document.write("Çarşamba");
+          break;
+        case 4:
+          document.write("Perşembe");
+          break;
+        case 5:
+          document.write("Cuma");
+          break;
+        case 6:
+          document.write("Cumartesi");
+          break;
+        case 7:
+          document.write("Pazar");
+          break;
+        default:
+          document.write("Geçersiz gün");
+      }
+    </script>
+  </body>
+</html>

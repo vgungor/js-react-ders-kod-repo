@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Çift/Tek Sayı Kontrolü</title>
+  </head>
+  <body>
+    <script>
+      // Kullanıcıdan sayı al
+      let sayi = prompt("Lütfen bir sayı giriniz:");
+      sayi = Number(sayi);
+
+      // Sayı mı kontrolü
+      if (isNaN(sayi)) {
+        document.write("Lütfen geçerli bir sayı giriniz.");
+      }
+      // Çift/tek kontrolü
+      else if (sayi % 2 === 0) {
+        document.write(sayi + " çifttir.");
+      } else {
+        document.write(sayi + " tektir.");
+      }
+    </script>
+  </body>
+</html>

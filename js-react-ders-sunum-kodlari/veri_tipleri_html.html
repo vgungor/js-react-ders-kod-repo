@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Temelleri - Notları</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+      h2 {
+        color: #333;
+      }
+      .status {
+        font-weight: bold;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Öğrenci Bilgi Sistemi</h2>
+      <div id="output"></div>
+      <button onclick="verileriGuncelle()">Verileri Konsola Yazdır</button>
+    </div>
+
+    <script>
+      // 1. DEĞİŞKENLER VE VERİ TİPLERİ
+
+      // String (Metin)
+      let ad = "Ahmet";
+      const okul = "İzmir Ekonomi Üniversitesi"; // Değeri değişmeyecekse 'const' kullanılır.
+
+      // Number (Sayı)
+      let yas = 20;
+      let ortalama = 3.45;
+
+      // Boolean (Mantıksal)
+      let mezunMu = false;
+
+      // Array (Dizi)
+      let dersler = ["Programlama Temelleri", "Veritabanı", "Web Tasarımı"];
+
+      // Object (Nesne)
+      let adres = {
+        sehir: "İzmir",
+        ilce: "Bornova",
+      };
+
+      // 2. HTML İÇERİĞİNİ GÜNCELLEME (DOM Manipülasyonu)
+      const ciktiAlani = document.getElementById("output");
+
+      ciktiAlani.innerHTML = `
+            <p><strong>İsim:</strong> ${ad}</p>
+            <p><strong>Okul:</strong> ${okul}</p>
+            <p><strong>Yaş:</strong> ${yas}</p>
+            <p><strong>İlk Ders:</strong> ${dersler[0]}</p>
+            <p><strong>Konum:</strong> ${adres.sehir} / ${adres.ilce}</p>
+            <p class="status">Durum: ${mezunMu ? "Mezun oldu" : "Öğrenci"}</p>
+        `;
+
+      // 3. FONKSİYON VE KONSOL KULLANIMI
+      function verileriGuncelle() {
+        console.log("Öğrenci Adı: " + ad);
+        console.log("Ders Sayısı: " + dersler.length);
+        alert(
+          "Bilgiler tarayıcı konsoluna yazdırıldı! (F12 tuşuna basarak bakabilirsin)",
+        );
+      }
+    </script>
+  </body>
+</html>
