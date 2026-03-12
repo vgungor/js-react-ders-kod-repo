@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Not Hesaplama</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+      }
+      #sonuc {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      input,
+      button {
+        padding: 5px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Not Hesaplama Uygulaması</h2>
+
+    <label for="notInput">0–100 arası bir not giriniz:</label>
+    <input type="number" id="notInput" min="0" max="100" />
+    <button id="hesaplaBtn">Harf Notunu Göster</button>
+
+    <div id="sonuc"></div>
+
+    <script>
+      const notInput = document.getElementById("notInput");
+      const hesaplaBtn = document.getElementById("hesaplaBtn");
+      const sonucDiv = document.getElementById("sonuc");
+
+      hesaplaBtn.addEventListener("click", function () {
+        let notDegeri;
+        let harfNotu;
+
+        // do...while ile geçerli sayı girene kadar tekrar sor
+        do {
+          notDegeri = parseInt(notInput.value);
+
+          if (isNaN(notDegeri) || notDegeri < 0 || notDegeri > 100) {
+            alert("Geçersiz not! Lütfen 0–100 arası bir sayı giriniz.");
+            return; // geçersiz girişte fonksiyondan çık
+          }
+        } while (isNaN(notDegeri) || notDegeri < 0 || notDegeri > 100);
+
+        // if/else ile harf notu belirleme
+        if (notDegeri >= 90) {
+          harfNotu = "AA";
+        } else if (notDegeri >= 80) {
+          harfNotu = "BA";
+        } else if (notDegeri >= 70) {
+          harfNotu = "BB";
+        } else if (notDegeri >= 60) {
+          harfNotu = "CB";
+        } else if (notDegeri >= 50) {
+          harfNotu = "CC";
+        } else {
+          harfNotu = "FF";
+        }
+
+        // Sonucu HTML içinde göster
+        sonucDiv.innerHTML = `Girilen not: <b>${notDegeri}</b> → Harf Notu: <b>${harfNotu}</b>`;
+      });
+    </script>
+  </body>
+</html>

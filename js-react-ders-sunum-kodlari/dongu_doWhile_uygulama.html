@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let notDegeri;
+      let harfNotu;
+
+      do {
+        notDegeri = prompt("Lütfen 0–100 arası bir not giriniz:");
+        notDegeri = parseInt(notDegeri);
+
+        if (isNaN(notDegeri) || notDegeri < 0 || notDegeri > 100) {
+          alert("Geçersiz not! Lütfen 0–100 arası bir sayı giriniz.");
+        }
+      } while (isNaN(notDegeri) || notDegeri < 0 || notDegeri > 100);
+
+      // Notu harf notuna çevir
+      if (notDegeri >= 90) {
+        harfNotu = "AA";
+      } else if (notDegeri >= 80) {
+        harfNotu = "BA";
+      } else if (notDegeri >= 70) {
+        harfNotu = "BB";
+      } else if (notDegeri >= 60) {
+        harfNotu = "CB";
+      } else if (notDegeri >= 50) {
+        harfNotu = "CC";
+      } else {
+        harfNotu = "FF";
+      }
+
+      // Sonucu göster
+      console.log("Girilen not: " + notDegeri + " → Harf Notu: " + harfNotu);
+      alert("Girilen not: " + notDegeri + "\nHarf Notu: " + harfNotu);
+    </script>
+  </body>
+</html>

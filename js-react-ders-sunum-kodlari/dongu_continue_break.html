@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <h3>Continue Örneği</h3>
+    <script>
+      for (let i = 1; i <= 5; i++) {
+        if (i === 3) {
+          document.write("bu değeri atladım - çevirmeye girmedi" + "<br>");
+          continue; // i 3 olduğunda bu adımı atla ve sonraki adıma geç
+        }
+        document.write(i + "<br>"); // Her satırdan sonra boşluk bırakmak için
+      }
+    </script>
+
+    <h3>Break Örneği</h3>
+    <script>
+      for (let i = 1; i <= 5; i++) {
+        if (i === 3) {
+          document.write("bu değeri döngüyü kırar, gerisi gelmez" + "<br>");
+          break; // i 3 olduğunda döngüyü sonlandır
+        }
+        document.write(i + "<br>"); // Her satırdan sonra boşluk bırakmak için
+      }
+    </script>
+  </body>
+</html>

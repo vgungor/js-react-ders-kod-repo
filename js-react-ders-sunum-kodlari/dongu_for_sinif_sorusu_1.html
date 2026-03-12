@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      for (let i = 1; i <= 20; i++) {
+        let rastgele = Math.floor(Math.random() * 10) + 1;
+
+        if (i % 10 === 0) {
+          document.write("Merhaba " + i);
+          document.write("<br>");
+        } else if (i % 2 === 1) {
+          document.write(
+            i +
+              " tek sayıdır. Rastgele sayı ile çarpımı: " +
+              i * rastgele +
+              "<br>",
+          );
+        } else {
+          document.write(i + " çift sayıdır. Karesi: " + i * i + "<br>");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      document.write("<h1>Pizza Dilimleme</h1>");
+      for (let dilim = 1; dilim <= 8; dilim++) {
+        document.write(dilim + ". dilimi aldım! <br>");
+      }
+      document.write("<p>Döngü sonu</p>");
+      //document.write(dilim); // Hata: dilim değişkeni for döngüsünün dışında tanımlanmadığı için erişilemez.
+
+      document.write("<h1>Sayılar toplamı</h1>");
+      let toplam = 0;
+      for (let i = 1; i <= 100; i++) {
+        toplam += i;
+        document.write(i + "<br>");
+      }
+      document.write(
+        "<p>1'den 100'e kadar olan sayıların toplamı: " + toplam + "</p>",
+      );
+
+      document.write("<h1>5ler çarpımı</h1>");
+      for (let i = 1; i <= 10; i++) {
+        document.write("5 x " + i + " = " + 5 * i + "<br>");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let sayi;
+
+      do {
+        sayi = prompt("Pozitif bir sayı giriniz:");
+        sayi = parseInt(sayi);
+
+        if (isNaN(sayi) || sayi <= 0) {
+          alert("Lütfen pozitif bir sayı giriniz!");
+        }
+      } while (isNaN(sayi) || sayi <= 0);
+
+      alert("Girdiğiniz pozitif sayı: " + sayi);
+    </script>
+  </body>
+</html>

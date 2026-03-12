@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let toplam = 0;
+      let sayi = -1; // Başlangıç değeri 0'dan farklı olmalı, döngü başlasın
+
+      while (sayi !== 0) {
+        sayi = parseInt(prompt("Pozitif bir sayı giriniz (0 ile bitirin):"));
+
+        if (!isNaN(sayi) && sayi > 0) {
+          toplam += sayi;
+        } else if (sayi < 0) {
+          alert("Negatif sayı giremezsiniz!");
+        }
+        // 0 girildiğinde döngü duracak
+      }
+
+      document.write("Girilen pozitif sayıların toplamı: " + toplam);
+    </script>
+  </body>
+</html>

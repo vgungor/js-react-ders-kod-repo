@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <h1>Diziler</h1>
+    <h2>Dizi Oluşturma</h2>
+    <pre>
+      let dizi = [1, 2, 3, 4, 5];  --> ÇIKTI: [1, 2, 3, 4, 5]
+    </pre>
+    <pre>
+      let hizmetler = new Array("Web Tasarım", "SEO", "Sosyal Medya Yönetimi");  <br>--> ÇIKTI: ["Web Tasarım", "SEO", "Sosyal Medya Yönetimi"]
+    </pre>
+    <script>
+      let dizi = [1, 2, 3, 4, 5];
+      document.write(dizi); // [1, 2, 3, 4, 5]
+      document.write("<br>"); // Satır atlamak için
+
+      let hizmetler = new Array("Web Tasarım", "SEO", "Sosyal Medya Yönetimi");
+      document.write(hizmetler); // ["Web Tasarım", "SEO", "Sosyal Medya Yönetimi"]
+      document.write("<br>"); // Satır atlamak için
+
+      // Boş bir dizi
+      let meyveler = [];
+      document.write("Boş dizi: " + meyveler); // []
+      document.write("<br>"); // Satır atlamak için
+      // Elemanlı bir dizi
+      let arabalar = ["Tesla", "BMW", "Audi"];
+      document.write(arabalar); // ["Tesla", "BMW", "Audi"]
+    </script>
+  </body>
+</html>

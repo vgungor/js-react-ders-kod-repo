@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Card Örneği</title>
+
+    <style>
+      .card {
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      /*
+        for döngüsü: 5 kez çalışır ve 5 card oluşturur.
+        createElement(): yeni HTML elemanları üretir (div, img, h3).
+        appendChild(): oluşturulan elemanları card içine ve sayfaya ekler.
+        picsum.photos: rastgele örnek görseller üretmek için kullanılır.
+        */
+
+      for (var i = 1; i <= 5; i++) {
+        var card = document.createElement("div");
+        card.className = "card";
+
+        var resim = document.createElement("img");
+        resim.src = "images/" + i + ".jpg";
+
+        var baslik = document.createElement("h3");
+        baslik.innerHTML = "Card Başlığı " + i;
+
+        card.appendChild(resim);
+        card.appendChild(baslik);
+
+        document.body.appendChild(card);
+      }
+    </script>
+  </body>
+</html>

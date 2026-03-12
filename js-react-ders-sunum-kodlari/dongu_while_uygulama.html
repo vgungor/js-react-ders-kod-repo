@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      let dogumYili;
+      let simdikiYil = new Date().getFullYear();
+
+      // Kullanıcı geçerli 4 haneli yıl girene kadar sor
+      while (true) {
+        dogumYili = prompt("Doğum yılınızı 4 haneli olarak giriniz:");
+        dogumYili = parseInt(dogumYili);
+
+        // 4 haneli ve geçerli yıl kontrolü
+        if (!isNaN(dogumYili) && dogumYili >= 1000 && dogumYili <= simdikiYil) {
+          break; // Geçerli değer girildi
+        } else {
+          alert("Lütfen geçerli bir 4 haneli doğum yılı giriniz!");
+        }
+      }
+
+      // Yaşı hesapla
+      let yas = simdikiYil - dogumYili;
+
+      // Yaşa göre kategori belirle
+      let kategori;
+      if (yas >= 0 && yas <= 12) {
+        kategori = "Çocuk";
+      } else if (yas >= 13 && yas <= 19) {
+        kategori = "Genç";
+      } else if (yas >= 20 && yas <= 59) {
+        kategori = "Yetişkin";
+      } else if (yas >= 60) {
+        kategori = "Yaşlı";
+      } else {
+        kategori = "Geçersiz yaş"; // Güvenlik için
+      }
+
+      // Sonucu göster
+      document.write("Yaşınız: " + yas + " → " + kategori);
+      alert("Yaşınız: " + yas + "\nKategori: " + kategori);
+    </script>
+  </body>
+</html>

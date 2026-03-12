@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * SONSUZ DÖNGÜ HATALARI REHBERİ
+       * Not: Bu kodları çalıştırırsanız tarayıcınız veya terminaliniz donabilir!
+       */
+
+      // 1. ARTIŞ UNUTULMUŞ: i hep 0 kalır, 10'dan hep küçüktür.
+      for (let i = 0; i < 10 /* boş */; ) {
+        console.log("Döngüden çıkılamıyor...");
+      }
+
+      // 2. YANLIŞ YÖN (ARTTIĞI İÇİN): 10'dan başlar 11, 12 diye gider. 0'dan hep uzaktır.
+      for (let i = 10; i > 0; i++) {
+        // i > 0 şartı her zaman true kalır.
+      }
+
+      // 3. YANLIŞ YÖN (AZALDIĞI İÇİN): 0, -1, -2... 100 sınırına hiç ulaşamaz.
+      for (let i = 0; i < 100; i--) {
+        // Hedef ileride ama biz geriye koşuyoruz.
+      }
+
+      // 4. HEP DOĞRU KOŞUL: Pozitif sayılar her zaman 0'dan büyük veya eşittir.
+      for (let i = 0; i >= 0; i++) {
+        // i arttıkça bu şartın bozulma ihtimali yok.
+      }
+
+      // 5. DOĞRUDAN "TRUE" VERMEK: Bir kontrol mekanizması yok.
+      for (let i = 0; true; i++) {
+        // Bilgisayara "Sonsuza kadar dön" dedik.
+      }
+
+      // 6. HEDEFİ ISKALAMAK: i hiçbir zaman tam olarak 10 olmaz.
+      for (let i = 0; i != 10; i += 3) {
+        // i değerleri: 0, 3, 6, 9, 12, 15... (10'u atladık!)
+      }
+
+      // 7. ONDALIK HATASI: Bilgisayar hassasiyeti yüzünden i tam 1.0 olmayabilir.
+      for (let i = 0; i != 1.0; i += 0.1) {
+        // i örneğin 1.00000000000002 olabilir ve != 1.0 şartı true kalır.
+      }
+
+      // 8. YANLIŞ DEĞİŞKEN: i'yi kontrol edip j'yi artırıyoruz.
+      let j = 0;
+      for (let i = 0; i < 10; j++) {
+        // i hep 0, şart hep doğru.
+      }
+
+      // 9. SIFIR ARTIŞ: Yerinde sayma.
+      for (let i = 0; i < 10; i += 0) {
+        // i + 0 = i. Değer hiç değişmiyor.
+      }
+
+      // 10. İÇERDE SIFIRLAMA: Döngü tam ilerleyecekken i'yi başa çekiyoruz.
+      for (let i = 0; i < 10; i++) {
+        i = 0; // i her seferinde 0'a eşitlenir, döngü asla 10'a ulaşamaz.
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS Operatör Oyunu</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      select,
+      input,
+      button {
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        margin-top: 20px;
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+      }
+      .correct {
+        color: green;
+      }
+      .wrong {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Operatör Oyunu</h1>
+
+    <label for="operator">Operatör seç:</label><br />
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+      <option value="**">** (üs)</option>
+      <option value="==">==</option>
+      <option value="===">===</option>
+      <option value="!=">!=</option>
+      <option value="!==">!==</option>
+      <option value=">">></option>
+      <option value="<"><</option>
+      <option value="&&">&&</option>
+      <option value="||">||</option></select
+    ><br />
+
+    <label for="value1">1. değer:</label><br />
+    <input type="text" id="value1" value="10" /><br />
+
+    <label for="value2">2. değer:</label><br />
+    <input type="text" id="value2" value="3" /><br />
+
+    <label for="guess">Tahminin:</label><br />
+    <input type="text" id="guess" /><br />
+
+    <button id="checkBtn">Kontrol Et</button>
+
+    <div id="output"></div>
+
+    <script>
+      const output = document.getElementById("output");
+      const operatorSelect = document.getElementById("operator");
+      const value1Input = document.getElementById("value1");
+      const value2Input = document.getElementById("value2");
+      const guessInput = document.getElementById("guess");
+      const checkBtn = document.getElementById("checkBtn");
+
+      function convertValue(val) {
+        if (val === "true") return true;
+        if (val === "false") return false;
+        if (val === "null") return null;
+        if (val === "undefined") return undefined;
+        if (!isNaN(Number(val))) return Number(val);
+        return val; // string olarak kalır
+      }
+
+      checkBtn.addEventListener("click", () => {
+        let val1 = convertValue(value1Input.value);
+        let val2 = convertValue(value2Input.value);
+        let operator = operatorSelect.value;
+        let correctResult;
+
+        try {
+          switch (operator) {
+            case "+":
+              correctResult = val1 + val2;
+              break;
+            case "-":
+              correctResult = val1 - val2;
+              break;
+            case "*":
+              correctResult = val1 * val2;
+              break;
+            case "/":
+              correctResult = val1 / val2;
+              break;
+            case "%":
+              correctResult = val1 % val2;
+              break;
+            case "**":
+              correctResult = val1 ** val2;
+              break;
+            case "==":
+              correctResult = val1 == val2;
+              break;
+            case "===":
+              correctResult = val1 === val2;
+              break;
+            case "!=":
+              correctResult = val1 != val2;
+              break;
+            case "!==":
+              correctResult = val1 !== val2;
+              break;
+            case ">":
+              correctResult = val1 > val2;
+              break;
+            case "<":
+              correctResult = val1 < val2;
+              break;
+            case "&&":
+              correctResult = val1 && val2;
+              break;
+            case "||":
+              correctResult = val1 || val2;
+              break;
+            default:
+              correctResult = "Hata";
+          }
+
+          let userGuess = guessInput.value;
+          // Boolean ve number karşılaştırması için esnek kontrol
+          if (String(correctResult) === userGuess) {
+            output.innerHTML = `<span class="correct">Tebrikler! Doğru: ${correctResult}</span>`;
+          } else {
+            output.innerHTML = `<span class="wrong">Yanlış! Doğru sonuç: ${correctResult}</span>`;
+          }
+        } catch (e) {
+          output.textContent = "Hata oluştu: " + e;
+        }
+      });
+    </script>
+  </body>
+</html>

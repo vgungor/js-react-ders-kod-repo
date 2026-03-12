@@ -5,14 +5,17 @@
     <title>Konsoldan çıktı almak</title>
     <script type="text/javascript">
       try {
-        let x = input;
-        if (x == "") throw "Girdi boş olamaz!"; // Kendi hatamızı fırlattık
         console.log("Girilen sayı: " + x);
       } catch (err) {
         console.log("Hata oluştu: " + err); // Hata burada yakalandı
       } finally {
         console.log("İşlem tamamlandı."); // Her durumda çalışır
       }
+    </script>
+
+    <script>
+      console.log("Girilen sayı: " + x); // Hata burada oluşur, çünkü x tanımlı değil
+      console.log("Bu satır çalışmaz."); // Bu satır çalışmaz, çünkü önce
     </script>
   </head>
   <body></body>
