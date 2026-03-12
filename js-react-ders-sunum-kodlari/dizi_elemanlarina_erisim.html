@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Title</title>
+  </head>
+  <body>
+    <h1>Diziler</h1>
+    <script>
+      let dersler = ["mbp192", "mbp214", "mbp102", "mbp223", "mbp196"];
+      document.write("Dersler: " + dersler); // Dersler: mbp192,mbp214,mbp102,mbp223,mbp196
+
+      document.write("<br>Dersler uzunluğu: " + dersler.length); // Dersler uzunluğu: 5
+      document.write("<br>Dizinin ilk indeksi 0'dır."); // Dizinin ilk indeksi 0'dır
+      document.write("<br>Dersler 0. Eleman: " + dersler[0]); // Dersler 0. Eleman: mbp192
+      document.write(
+        "<br>Dizinin son indeksi " + (dersler.length - 1) + "'dir.",
+      ); // Dizinin son indeksi 4'tür.
+      document.write("<br>Dersler son Eleman: " + dersler[dersler.length - 1]); // Dersler son Eleman: mbp196
+    </script>
+
+    <h2>Dizilerde Eleman Ekleme ve Erişim</h2>
+    <script>
+      dersler[5] = "mbp205"; // Dizinin 5. indeksine mbp205 ekledik
+      document.write("Dersler: " + dersler); // Dersler: mbp
+      document.write(
+        "<br>Dizinin son indeksi " + (dersler.length - 1) + "'dir.",
+      ); // Dizinin son indeksi 4'tür.
+      document.write("<br>Dersler son Eleman: " + dersler[dersler.length - 1]);
+    </script>
+
+    <h2>Dizilerde Eleman Ekleme ve Erişim</h2>
+    <script>
+      dersler[10] = "mbp205"; // Dizinin 5. indeksine mbp205 ekledik
+      document.write("Dersler: " + dersler); // Dersler: mbp
+
+      document.write(
+        "<br>Dizinin arada eklenen elemanları değeri: " +
+          dersler[9] +
+          ", türü: " +
+          typeof dersler[9] +
+          ", indeksi " +
+          (dersler.length - 1) +
+          "'dir.",
+      );
+
+      document.write(
+        "<br>Dizinin son indeksi " + (dersler.length - 1) + "'dir.",
+      ); // Dizinin son indeksi 4'tür.
+      document.write("<br>Dersler son Eleman: " + dersler[dersler.length - 1]);
+    </script>
+    <h2>Dizileri döngü ile yazdırma</h2>
+    <script>
+      for (let index = 0; index < dersler.length; index++) {
+        const element = dersler[index];
+        document.write(
+          index + ". Eleman: " + element + "- türü: " + typeof element + "<br>",
+        );
+      }
+    </script>
+  </body>
+</html>
