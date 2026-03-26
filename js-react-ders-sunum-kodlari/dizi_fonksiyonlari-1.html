@@ -1,0 +1,20 @@
+<script>
+  let sayilar = [1, 2, 3, 4, 5];
+  document.write("İlk hal: " + sayilar + "<br>"); // [1, 2, 3, 4]
+
+  document.write("pop() sonucu: " + sayilar.pop() + "<br>"); // Son elemanı çıkarır (5)
+  document.write("pop() sonrası dizi: " + sayilar + "<br>"); // [1, 2, 3, 4]
+
+  document.write("shift() sonucu: " + sayilar.shift() + "<br>"); // İlk elemanı çıkarır (1)
+  document.write("shift() sonrası dizi: " + sayilar + "<br>"); // [2, 3, 4]
+
+  document.write(
+    "push(6) sonucu-Yeni dizi uzunluğu: " + sayilar.push(6) + "<br>",
+  ); // 6
+  document.write("push(6) sonrası dizi: " + sayilar + "<br>"); // [2, 3, 4, 6]
+
+  document.write(
+    "unshift(0) sonucu-Yeni dizi uzunluğu: " + sayilar.unshift(0) + "<br>",
+  ); // 5
+  document.write("unshift(0) sonrası dizi: " + sayilar + "<br>"); // [0, 2, 3, 4, 6]
+</script>

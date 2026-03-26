@@ -1,0 +1,67 @@
+<style>
+  h3 {
+    color: blue;
+  }
+</style>
+<h3>
+  splice() fonksiyonu; Aynı anda hem eleman silebilir, hem ekleyebilir, hem de
+  güncelleyebilir orijinal diziyi doğrudan değiştirir (mutate eder).
+</h3>
+<h4>
+  dizi.splice(başlangıç indeksi, silinecekAdet, eklenecekEleman1,
+  eklenecekEleman2, ...);
+</h4>
+<script>
+  let diller = ["HTML", "CSS", "JS", "Python"];
+  document.write("diller: " + diller + "<br>");
+
+  document.write("<b>Sadece Eleman Silme</b><br>");
+  let silinenDeger = diller.splice(1, 2);
+  document.write("silinenDeger: " + silinenDeger + "<br>");
+  document.write("diller: " + diller + "<br>");
+
+  document.write("<b>Eleman Ekleme (Hiç Silmeden)</b><br>");
+  diller.splice(1, 0, "PHP", "Perl");
+  document.write("diller: " + diller + "<br>");
+
+  document.write("<b>Eleman Değiştirme (Güncelleme)</b><br>");
+  diller.splice(1, 1, "GüncelDil"); //"PHP" "GüncelDil" olarak güncellendi
+  document.write("diller: " + diller + "<br>");
+</script>
+
+<h3>
+  slice() fonksiyonu; bir dizinin belirli bir kısmını kopyalayarak yeni bir dizi
+  oluşturmak için kullanılır. En önemli özelliği, orijinal dizide hiçbir
+  değişiklik yapmamasıdır (immutable).
+</h3>
+<h4>dizi.slice(baslangic, bitis);</h4>
+<h5>
+  baslangıç: Kopyalamanın başlayacağı indeks (dahildir). <br />bitiş:
+  Kopyalamanın biteceği indeks (dahil değildir). Eğer belirtilmezse dizinin
+  sonuna kadar gider
+</h5>
+<script>
+  document.write("<b>Belirli Bir Aralığı Almak</b><br>");
+  const kelimeler = ["ben", "sen", "o", "biz", "siz"];
+  const parca = kelimeler.slice(1, 3);
+
+  document.write("parça:" + parca + "<br>");
+  document.write("kelimeler dizisi: " + kelimeler + "<br>");
+  document.write("<b>Dizinin Sonuna Kadar Almak</b><br>");
+  document.write("<b>Negatif İndeks Kullanımı</b><br>");
+  document.write("<b>slice() ile Tam Kopya Oluşturma</b><br>");
+</script>
+
+<h3>
+  includes() fonksiyonu; bir dizinin belirli bir elemanı içerip içermediğini
+  kontrol eder
+</h3>
+<h4>Sonuç olarak size her zaman bir boolean (true veya false) döndürür.</h4>
+<script>
+  const arabalar = ["Tesla", "Toyota", "BMW", "Audi"];
+
+  document.write("'BMW' var mı: " + arabalar.includes("BMW") + "<br>"); // Çıktı: true
+  document.write(
+    "'Mercedes' var mı: " + arabalar.includes("Mercedes") + "<br>",
+  ); // Çıktı: false
+</script>

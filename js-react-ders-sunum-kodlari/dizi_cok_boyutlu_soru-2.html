@@ -1,0 +1,34 @@
+<script>
+  let notlar = [
+    ["Ali", 80, 90],
+    ["Ayşe", 70, 85],
+    [70, 85],
+    ["Mehmet", 60, 75],
+    ["Volkan", 60, 0],
+  ];
+
+  document.write(
+    "forEach ile yapılamaz çünkü <br> continue kullanılmı var <br>",
+  );
+  //   notlar.forEach((ogrenci) => {
+  //     let ortalama = (ogrenci[1] * 0.4 + ogrenci[2] * 0.6) / 2;
+  //     document.write(ogrenci[0] + ": " + ortalama + "<br>");
+  //   });
+
+  document.write("for...of ile <br>");
+  let atlananOgrenciAdedi = 0;
+  for (let veri of notlar) {
+    if (veri.length <= 2) {
+      atlananOgrenciAdedi += 1;
+      continue;
+    } else {
+      if (veri[2] == 0) {
+        document.write(veri[0] + ": " + "dersten kaldı <br>");
+      } else {
+        let ortalama = (veri[1] * 0.4 + veri[2] * 0.6) / 2;
+        document.write(veri[0] + ": " + ortalama + "<br>");
+      }
+    }
+  }
+  document.write(atlananOgrenciAdedi + " öğrenci isim yazmamış<br>");
+</script>

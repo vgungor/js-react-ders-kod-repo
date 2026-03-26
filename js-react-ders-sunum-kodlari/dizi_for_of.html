@@ -1,0 +1,24 @@
+<script>
+  const sayilar = [5, 10, 15];
+  let toplam = 0;
+
+  for (const sayi of sayilar) {
+    document.write(sayi + "<br>");
+    toplam += sayi;
+  }
+
+  document.write("Toplam: " + toplam + "<br>");
+</script>
+
+<script>
+  document.write("<h3>Indeks verir</h3><br>");
+  for (const index in sayilar) {
+    document.write(index + "<br>");
+    // index verir
+  }
+
+  document.write("<h3>Değerleri verir</h3><br>");
+  for (const value of sayilar) {
+    document.write(value + "<br>");
+  } // değeri verir
+</script>

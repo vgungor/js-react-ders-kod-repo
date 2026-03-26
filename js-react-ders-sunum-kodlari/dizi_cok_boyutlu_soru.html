@@ -1,0 +1,19 @@
+<script>
+  let notlar = [
+    ["Ali", 80, 90],
+    ["Ayşe", 70, 85],
+    ["Mehmet", 60, 75],
+  ];
+
+  document.write("forEach ile");
+  notlar.forEach((ogrenci) => {
+    let ortalama = (ogrenci[1] * 0.4 + ogrenci[2] * 0.6) / 2;
+    document.write(ogrenci[0] + ": " + ortalama + "<br>");
+  });
+
+  document.write("for...of ile");
+  for (let veri of notlar) {
+    let ortalama = (veri[1] * 0.4 + veri[2] * 0.6) / 2;
+    document.write(veri[0] + ": " + ortalama + "<br>");
+  }
+</script>

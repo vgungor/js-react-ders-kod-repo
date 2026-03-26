@@ -1,0 +1,66 @@
+<style>
+  h3 {
+    color: blue;
+  }
+</style>
+<h3>reverse() fonksiyonu, diziyi tersine çevirir</h3>
+<script>
+  let sayilar = [1, 2, 3, 4, 5];
+  document.write("İlk hal: " + sayilar + "<br>"); // [1, 2, 3, 4]
+
+  sayilar.reverse();
+  document.write("reverse() sonrası dizi: " + sayilar + "<br>"); // [5, 4, 3, 2, 1]
+
+  let araçlar = ["Bisiklet", "Araba", "Kamyon", "Motosiklet"];
+  document.write("Araçlar: " + araçlar + "<br>");
+  // ["Bisiklet", "Araba", "Kamyon", "Motosiklet"]
+
+  let sıralanmışAraçlar = araçlar.reverse();
+  document.write("Sıralanmış araçlar: " + sıralanmışAraçlar + "<br>");
+  // ["Motosiklet", "Kamyon", "Araba", "Bisiklet"]
+  // orijinal diziyi de tersine çevirir
+  document.write("Orijinal araçlar (reverse() sonrası): " + araçlar + "<br>");
+  // ["Motosiklet", "Kamyon", "Araba", "Bisiklet"]
+</script>
+
+<h3>
+  join() fonksiyonu, Dizideki tüm elemanları birleştirerek tek bir metin
+  (string) oluşturmanızı sağlar
+</h3>
+<script>
+  document.write("<b>Varsayılan Kullanım (Virgül ile)</b><br>");
+  const meyveler = ["Elma", "Muz", "Çilek"];
+  const sonuc = meyveler.join();
+
+  document.write(sonuc); // "Elma,Muz,Çilek"
+
+  document.write("<br>");
+
+  document.write("<b>Farklı Ayırıcılar Kullanma</b><br>");
+  const gunler = ["Pazartesi", "Salı", "Çarşamba"];
+
+  document.write(gunler.join(" - ")); // "Pazartesi - Salı - Çarşamba"
+  document.write("<br>");
+  document.write(gunler.join(" / ")); // "Pazartesi / Salı / Çarşamba"
+  document.write("<br>");
+  document.write(gunler.join("")); // "PazartesiSalıÇarşamba" (Boşluksuz birleştirir)
+</script>
+
+<h3>
+  split() fonksiyonu, Bir metni (string), belirttiğiniz bir ayırıcıya
+  (separator) göre parçalara böler ve bu parçalardan oluşan yeni bir dizi
+  (array) döndürür.
+</h3>
+<script>
+  const cumle = "JavaScript öğrenmek çok keyifli";
+  const kelimeler = cumle.split(" ");
+
+  document.write("cumle metin türünde: " + cumle);
+  document.write("<br>");
+  document.write("Kelimeler dizisi: " + kelimeler); // ["JavaScript", "öğrenmek", "çok", "keyifli"]
+  document.write("<br>");
+  for (let kelime in kelimeler) {
+    document.write(kelime + ". eleman türü: " + typeof kelime + "<br>");
+  }
+  document.write("<br>");
+</script>

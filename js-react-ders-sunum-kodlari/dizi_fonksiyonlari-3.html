@@ -1,0 +1,40 @@
+<style>
+  h3 {
+    color: blue;
+  }
+</style>
+<h3>sort() fonksiyonu; diziyi alfabetik olarak sıralar</h3>
+<script>
+  let meyveler = ["Elma", "Armut", "Muz", "Çilek"];
+  document.write("Meyveler: " + meyveler + "<br>"); // ["Elma", "Armut", "Muz", "Çilek"]
+
+  meyveler.sort();
+  document.write("Sıralanmış meyveler: " + meyveler + "<br>"); // ["Armut", "Çilek", "Elma", "Muz"]
+  document.write("Orijinal meyveler (sort() sonrası): " + meyveler + "<br>");
+  // ["Armut", "Çilek", "Elma", "Muz"]
+</script>
+<h3>sort() fonksiyonu, SAYI SIRALAMA - diziyi sayısal olarak sıralar</h3>
+<p>
+  Bu mantıkla örneğin; 300 ile 70 değerlerini karşılaştıralım. Matematiksel
+  olarak $300 > 70$ olsa da metin tabanlı karşılaştırmada $300 < 70$ olarak
+  kabul edilir. Peki, bu karşılaştırma nasıl yapılıyor? İlk önce 3 ile 7
+  karşılaştırılıyor. 3 karakterinin Unicode karşılığı 51 (decimal) ve 7
+  karakterinin Unicode karşılığı 55 (decimal) olduğundan, 3 karakteri 7
+  karakterinden küçük olarak kabul ediliyor ve aslında 300 sayısının da 70
+  sayısından küçük olduğuna hükmediliyor.
+</p>
+<script>
+  let sayiDizisi = [40, 100, 1, 5, 25, 10];
+  document.write("Sayı dizisi: " + sayiDizisi + "<br>"); // [40, 100, 1, 5, 25, 10]
+  sayiDizisi.sort();
+  document.write("Sıralanmış sayı dizisi: " + sayiDizisi + "<br>");
+  // [1, 10, 100, 25, 40, 5]
+
+  //GELECEK KONU - CALLBACK FUNCTIONS
+  // sayıları doğru sıralamak için karşılaştırma fonksiyonu kullanmalıyız
+  sayiDizisi.sort(function (a, b) {
+    return a - b; // Küçükten büyüğe sıralama
+  });
+  document.write("Doğru sıralanmış sayı dizisi: " + sayiDizisi + "<br>");
+  // [1, 5, 10, 25, 40, 100]
+</script>
