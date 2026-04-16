@@ -1,0 +1,25 @@
+<body>
+  <script>
+    let ogrenciler = [
+      ["Ali", 50],
+      ["Ayşe", 80],
+      ["Mehmet", 30],
+    ];
+
+    // ul oluştur
+    let ul = document.createElement("ul");
+
+    // filtreleme
+    let sonuc = ogrenciler.filter((o) => o[1] > 30);
+
+    // li'leri oluştur ve ul içine ekle
+    sonuc.forEach((o) => {
+      let li = document.createElement("li");
+      li.textContent = o[0] + " - " + o[1];
+      ul.appendChild(li);
+    });
+
+    // body'e ekle
+    document.body.appendChild(ul);
+  </script>
+</body>

@@ -1,0 +1,53 @@
+<script>
+  let notlar = [
+    ["Ali", 80, 90],
+    ["Ayşe", 70, 85],
+    ["", 70, 85],
+    ["Mehmet", 60, 75],
+    ["Volkan", 60, 0],
+  ];
+
+  document.write("<h5>notlar Dizinin ilk halini forEach ile yazdırma</h5>");
+  notlar.forEach((ogr) => {
+    document.write(ogr[0] + " - " + ogr[1] + " - " + ogr[2] + "<br>");
+  });
+  document.write("<hr />");
+  let atlanan = 0;
+
+  let sonuc = notlar.map((ogr) => {
+    let ad = ogr[0];
+    let vize = ogr[1];
+    let final = ogr[2];
+
+    // İsim boşsa atla
+    if (ad === "") {
+      atlanan++;
+      return null;
+    }
+
+    // Final 0 ise kaldı
+    if (final === 0) {
+      return `${ad} - ${vize} - ${final} → dersten kaldı`;
+    }
+
+    let ortalama = vize * 0.4 + final * 0.6;
+
+    return `${ad} - ${vize} - ${final} → ${ortalama}`;
+  });
+
+  // null olanları temizle
+  sonuc = sonuc.filter((x) => x !== null);
+
+  document.write(
+    "<h5>forEach ile map ve filter sonucu yeni diziyi (sonuc) yazdırma</h5>",
+  );
+  sonuc.forEach((x) => document.write(x + "<br>"));
+
+  document.write("Atlanan öğrenci sayısı: " + atlanan);
+
+  document.write("<hr />");
+  document.write("<h5>notlarDizinin son halini forEach ile yazdırma</h5>");
+  notlar.forEach((ogr) => {
+    document.write(ogr[0] + " - " + ogr[1] + " - " + ogr[2] + "<br>");
+  });
+</script>

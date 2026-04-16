@@ -1,0 +1,22 @@
+<h4>Alternatif Kullanım - dizi</h4>
+<script>
+  const sayilar = [1, 2, 3, 4, 5, 6, 7];
+
+  const uctenBuyukler = sayilar.filter((sayi) => sayi > 3);
+  document.write(uctenBuyukler + "<br>"); // [4, 5, 6, 7]
+
+  const ciftler = sayilar.filter((sayi) => sayi % 2 === 0);
+  document.write(ciftler); // [2, 4, 6]
+</script>
+<h4>Alternatif Kullanım - çok boyutlu dizi</h4>
+<script>
+  let ogrenciler = [
+    ["Ali", 50],
+    ["Ayşe", 80],
+    ["Mehmet", 30],
+  ];
+
+  let gecenler = ogrenciler.filter((o) => o[1] >= 50);
+
+  document.write(gecenler + " - türü: " + typeof gecenler); // [["Ali", 50], ["Ayşe", 80]]
+</script>

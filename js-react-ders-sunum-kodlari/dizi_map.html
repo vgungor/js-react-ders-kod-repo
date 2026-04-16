@@ -1,0 +1,18 @@
+<script>
+  let isimler = ["ali", "ayşe", "mehmet"];
+  let buyuk = isimler.map((isim) => isim.toUpperCase());
+
+  for (let i = 0; i < buyuk.length; i++) {
+    document.write(isimler[i] + " -> " + buyuk[i] + "<br>");
+  }
+</script>
+<hr />
+<script>
+  let isimler2 = ["ali", "ayşe", "mehmet"];
+
+  let buyuk2 = isimler2.map((isim) => isim.toLocaleUpperCase("tr-TR"));
+
+  for (let i = 0; i < buyuk2.length; i++) {
+    document.write(isimler2[i] + " -> " + buyuk2[i] + "<br>");
+  }
+</script>

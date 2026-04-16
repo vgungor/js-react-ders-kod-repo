@@ -1,0 +1,25 @@
+<script>
+  let dizi = [2, 5, , 9];
+  const logArrayElements = (element, index /*, array */) => {
+    document.write(`a[${index}] = ${element}<br>`);
+  };
+
+  dizi.forEach(logArrayElements);
+  // Logs:
+  // a[0] = 2
+  // a[1] = 5
+  // a[3] = 9
+
+  //ALTERNATİF KULLANIM
+  dizi.forEach((element, index) => {
+    document.write(`a[${index}] = ${element}<br>`);
+  });
+
+  // İndex 2 boş olduğu için atladı.
+  // forEach, her bir eleman için callback fonksiyonunu çağırır
+  // ve ona üç argüman sağlar: elemanın kendisi, elemanın indeksi
+  // ve üzerinde işlem yapılan dizi.
+  // Bu örnekte, boş olan indeks atlanır ve
+  // sadece mevcut elemanlar için callback çalıştırılır.
+  // Callback fonksiyonu, her bir elemanı ve onun indeksini yazdırır.
+</script>
