@@ -1,0 +1,15 @@
+<script>
+  function listeOlustur(dizi) {
+    document.write("<ul>");
+
+    for (let i = 0; i < dizi.length; i++) {
+      document.write("<li>" + dizi[i] + "</li>");
+    }
+
+    document.write("</ul>");
+  }
+
+  // Örnek kullanım
+  let meyveler = ["Elma", "Armut", "Muz", "Kiraz"];
+  listeOlustur(meyveler);
+</script>

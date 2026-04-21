@@ -1,0 +1,43 @@
+<script>
+  async function kullaniciEkle() {
+    let yeniKullanici = {
+      name: "Volkan",
+      email: "volkan@mail.com",
+    };
+
+    try {
+      // 1. POST
+      let response = await fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(yeniKullanici),
+      });
+
+      let data = await response.json();
+      document.write("Eklenen kullanıcı: " + JSON.stringify(data));
+
+      // 2. TÜM KULLANICILARI GETİR
+      kullanicilariGetir();
+    } catch (error) {
+      document.write("Hata: " + error.message);
+    }
+  }
+
+  document.write("Yeni kullanıcı ekleniyor...<br>");
+  document.write("<hr>");
+  // GET fonksiyonu
+  async function kullanicilariGetir() {
+    try {
+      let response = await fetch("https://jsonplaceholder.typicode.com/users");
+      let users = await response.json();
+
+      document.write("<hr>Tüm kullanıcılar: " + JSON.stringify(users));
+    } catch (error) {
+      document.write("Listeleme hatası: " + error.message);
+    }
+  }
+
+  kullaniciEkle();
+</script>

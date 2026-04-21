@@ -1,0 +1,16 @@
+<script>
+  // Math.pow(x,y) metodunu taklit eden fonksiyon
+  var ust = function (say, kuvvet) {
+    // Math.pow(x,y) x sayısının y.kuvvetini bulmak için kullanılır.
+    var sonuc = 1;
+    for (var i = 0; i < kuvvet; i++) {
+      /* Bu döngü i {0, ... ,(kuvvet-1)} aralığındaki 
+      değerler için toplam kuvvet sayısı kadar iterasyon 
+      gerçekleştirecektir. */
+      sonuc *= say;
+    }
+    return sonuc;
+  };
+  var toplam = ust(5, 2) + ust(3, 2);
+  console.log(toplam); // sonuç:25+9=34
+</script>

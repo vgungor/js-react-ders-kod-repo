@@ -1,0 +1,34 @@
+<script>
+  let sepet = [
+    { urun: "Laptop", fiyat: 15000, adet: 1 },
+    { urun: "Mouse", fiyat: 200, adet: 2 },
+    { urun: "Klavye", fiyat: 500, adet: 1 },
+  ];
+
+  // 1. Toplam hesaplayan fonksiyon (RETURN VAR)
+  function sepetToplamHesapla(sepet) {
+    let toplam = 0;
+
+    for (let i = 0; i < sepet.length; i++) {
+      toplam += sepet[i].fiyat * sepet[i].adet;
+    }
+
+    return toplam;
+  }
+
+  // 2. Sepeti gösteren fonksiyon (RETURN KULLANIYOR)
+  function sepetiGoster() {
+    let toplamTutar = sepetToplamHesapla(sepet);
+
+    document.write("Toplam Sepet Tutarı: " + toplamTutar + " TL<br>");
+
+    if (toplamTutar > 1000) {
+      document.write("Kargo Bedava!");
+    } else {
+      document.write("Kargo ücreti eklenecek.");
+    }
+  }
+
+  // Fonksiyonu çağır
+  sepetiGoster();
+</script>

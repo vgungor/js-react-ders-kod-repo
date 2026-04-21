@@ -1,0 +1,25 @@
+<script>
+  async function kullaniciEkle() {
+    let yeniKullanici = {
+      name: "Volkan",
+      email: "volkan@mail.com",
+    };
+
+    try {
+      let response = await fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(yeniKullanici),
+      });
+
+      let data = await response.json();
+      document.write("Eklenen kullanıcı: " + JSON.stringify(data));
+    } catch (error) {
+      document.write("Hata: " + error.message);
+    }
+  }
+
+  kullaniciEkle();
+</script>

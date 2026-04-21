@@ -1,0 +1,44 @@
+<form id="kayitFormu">
+  <input type="text" id="ad" placeholder="Ad" />
+  <input type="email" id="email" placeholder="Email" />
+  <button type="submit">Gönder</button>
+</form>
+
+<div id="mesaj"></div>
+
+<script>
+  document
+    .getElementById("kayitFormu")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      let ad = document.getElementById("ad").value;
+      let email = document.getElementById("email").value;
+
+      let veri = {
+        name: ad,
+        email: email,
+      };
+
+      try {
+        let response = await fetch(
+          "https://jsonplaceholder.typicode.com/users",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(veri),
+          },
+        );
+
+        let sonuc = await response.json();
+
+        document.getElementById("mesaj").innerHTML =
+          "Kayıt başarılı: " + sonuc.name;
+      } catch (error) {
+        document.getElementById("mesaj").innerHTML =
+          "Kayıt sırasında hata oluştu.";
+      }
+    });
+</script>
