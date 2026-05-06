@@ -1,0 +1,22 @@
+<input type="radio" name="bölüm" value="Programlama" /> Bilgisayar Programlama
+<input type="radio" name="bölüm" value="TDS" /> TDS
+<input type="radio" name="bölüm" value="MIS" /> Yönetim Bilişim Sistemleri
+<input type="radio" name="bölüm" value="EHB" /> Elektronik ve Haberleşme
+
+<button onclick="kontrolEt()">Seçimi Gör</button>
+
+<p id="sonuc"></p>
+
+<script>
+  function kontrolEt() {
+    const secenekler = document.getElementsByName("bölüm");
+
+    // Liste döndüğü için döngüyle kontrol etmemiz gerekir
+    secenekler.forEach((radio) => {
+      if (radio.checked) {
+        document.getElementById("sonuc").innerText =
+          "Seçilen değer: " + radio.value;
+      }
+    });
+  }
+</script>

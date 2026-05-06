@@ -1,0 +1,34 @@
+<h3>Hobilerinizi Seçiniz:</h3>
+<input type="checkbox" name="hobi" value="Kodlama" /> Kodlama <br />
+<input type="checkbox" name="hobi" value="Müzik" /> Müzik <br />
+<input type="checkbox" name="hobi" value="Seyahat" /> Seyahat <br />
+<input type="checkbox" name="hobi" value="Yüzme" /> Yüzme <br />
+
+<button id="btn-goster">Seçilenleri Göster</button>
+<p id="sonuc"></p>
+
+<script>
+  const buton = document.getElementById("btn-goster");
+
+  buton.addEventListener("click", function () {
+    // Aynı 'name' değerine sahip tüm checkboxları bir liste olarak yakalarız
+    const hobiler = document.getElementsByName("hobi");
+    let secilenler = [];
+
+    // NodeList üzerinde döngü kurarak hangilerinin işaretli olduğunu kontrol ederiz
+    hobiler.forEach((checkbox) => {
+      if (checkbox.checked) {
+        secilenler.push(checkbox.value);
+        console.log("Seçilen hobi: " + checkbox.value);
+      }
+    });
+
+    // Sonucu ekrana yazdıralım
+    const sonucYazi = document.getElementById("sonuc");
+    if (secilenler.length > 0) {
+      sonucYazi.innerText = "Seçtiğiniz hobiler: " + secilenler.join(", ");
+    } else {
+      sonucYazi.innerText = "Henüz bir seçim yapmadınız.";
+    }
+  });
+</script>
