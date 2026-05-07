@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>textContent Örneği</title>
+
+    <style>
+      .gizli {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="alan">
+      Merhaba
+      <span class="gizli">GİZLİ YAZI</span>
+    </div>
+
+    <button onclick="goster()">Göster</button>
+
+    <h3>innerText</h3>
+    <p id="innerText-sonuc"></p>
+
+    <h3>textContent</h3>
+    <p id="textContent-sonuc"></p>
+
+    <script>
+      function goster() {
+        let sonuc1 = document.getElementById("alan").innerText;
+
+        let sonuc2 = document.getElementById("alan").textContent;
+
+        document.getElementById("innerText-sonuc").textContent =
+          "innerText: " + sonuc1;
+        document.getElementById("textContent-sonuc").textContent =
+          "textContent: " + sonuc2;
+      }
+    </script>
+  </body>
+</html>

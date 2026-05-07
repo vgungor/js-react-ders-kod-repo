@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>innerHTML Örneği</title>
+  </head>
+  <body>
+    <div id="kutu"></div>
+
+    <button onclick="ekle()">İçerik Ekle</button>
+
+    <script>
+      function ekle() {
+        document.getElementById("kutu").innerHTML = "<h1>Merhaba Dünya</h1>";
+      }
+    </script>
+  </body>
+</html>

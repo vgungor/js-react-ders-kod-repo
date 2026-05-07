@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>getElementsByClassName Örneği</title>
+
+    <style>
+      .tamamlandi {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Görev Listesi</h2>
+
+    <ul>
+      <li class="tamamlandi">HTML çalış</li>
+      <li class="tamamlandi">CSS çalış</li>
+      <li class="tamamlandi">JavaScript çalış</li>
+      <li id="gorev4">React öğren</li>
+      <li>Node.js öğren</li>
+    </ul>
+
+    <button onclick="gorevEkle()">Görev 4 - "React Öğren" Güncelle</button>
+
+    <p id="sonuc"></p>
+
+    <script>
+      // tamamlandi sınıfına sahip elemanları al
+      let liste = document.getElementsByClassName("tamamlandi");
+
+      // Başlangıç uzunluğu
+      console.log("İlk uzunluk:", liste.length);
+      const sonucYazi = document.getElementById("sonuc");
+      sonucYazi.innerText = "Tamamlanan görev sayısı: " + liste.length;
+
+      // Üzerini çiz
+      for (let i = 0; i < liste.length; i++) {
+        liste[i].style.textDecoration = "line-through";
+      }
+
+      function gorevEkle() {
+        // tamamlanmayan elemana sınıf ekle
+        let yeniEleman = document.getElementById("gorev4");
+
+        yeniEleman.classList.add("tamamlandi");
+
+        // Yeni elemanın da üzerini çiz
+        yeniEleman.style.textDecoration = "line-through";
+
+        // Canlı koleksiyon kontrolü
+        console.log("Yeni uzunluk:", liste.length);
+        sonucYazi.innerText +=
+          "\nYeni tamamlanan görev sayısı: " + liste.length;
+      }
+    </script>
+  </body>
+</html>

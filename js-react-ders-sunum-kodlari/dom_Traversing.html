@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Traversing Örneği</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      .kutu {
+        border: 2px solid gray;
+        padding: 10px;
+        margin: 10px 0;
+      }
+
+      .aktif {
+        background-color: lightblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="aile" class="kutu">
+      <h2>Ebeveyn Div</h2>
+
+      <ul id="liste">
+        <li>Elma</li>
+        <li class="secili">Armut</li>
+        <li>Muz</li>
+      </ul>
+    </div>
+
+    <button onclick="gezin()">DOM'da Gezin</button>
+    <p id="sonuc"></p>
+
+    <script>
+      function gezin() {
+        // Seçili li
+        let secili = document.querySelector(".secili");
+
+        // parentElement → bir üst eleman
+        document.getElementById("sonuc").textContent =
+          " | Seçili eleman: " + secili.textContent;
+        document.getElementById("sonuc").style.whiteSpace = "pre-line";
+        console.log("Parent:");
+        console.log(secili.parentElement);
+
+        // children → alt elemanlar
+        document.getElementById("sonuc").textContent +=
+          "\n | Çocuk sayısı: " + secili.parentElement.children.length;
+        console.log("Children:");
+        console.log(secili.parentElement.children);
+
+        // firstElementChild
+        document.getElementById("sonuc").textContent +=
+          "\n | İlk çocuk: " +
+          secili.parentElement.firstElementChild.textContent;
+        console.log("İlk çocuk:");
+        console.log(secili.parentElement.firstElementChild);
+
+        // lastElementChild
+        document.getElementById("sonuc").textContent +=
+          "\n | Son çocuk: " +
+          secili.parentElement.lastElementChild.textContent;
+        console.log("Son çocuk:");
+        console.log(secili.parentElement.lastElementChild);
+
+        // previousElementSibling
+        document.getElementById("sonuc").textContent +=
+          "\n | Önceki kardeş: " + secili.previousElementSibling.textContent;
+        console.log("Önceki kardeş:");
+        console.log(secili.previousElementSibling);
+
+        // nextElementSibling
+        document.getElementById("sonuc").textContent +=
+          "\n | Sonraki kardeş: " + secili.nextElementSibling.textContent;
+        console.log("Sonraki kardeş:");
+        console.log(secili.nextElementSibling);
+
+        // parent'a class ekle
+        secili.parentElement.parentElement.classList.add("aktif");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>classList Örneği</title>
+
+    <style>
+      .aktif {
+        color: white;
+        background-color: green;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="metin">Merhaba Dünya</p>
+
+    <button onclick="degistir()">Toggle Stil</button>
+
+    <script>
+      function degistir() {
+        document.getElementById("metin").classList.toggle("aktif");
+      }
+    </script>
+  </body>
+</html>

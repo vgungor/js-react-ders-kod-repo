@@ -1,0 +1,52 @@
+<div id="kart" class="isik-acik">
+  <img id="profilResmi" src="dom_gunduz.png" alt="Profil" />
+  <h2 id="baslik">Kullanıcı Profili</h2>
+  <a id="sosyalLink" href="#">Profil Sayfasına Git</a>
+
+  <br /><br />
+
+  <button onclick="moduDegistir()">Modu Değiştir</button>
+  <button onclick="linkiKilitle()">Linki Kilitle/Aç</button>
+</div>
+
+<script>
+  function moduDegistir() {
+    const kart = document.getElementById("kart");
+    const resim = document.getElementById("profilResmi");
+
+    // 1. hasAttribute: Öznitelik kontrolü
+    if (resim.hasAttribute("src")) {
+      // 2. getAttribute: Değeri okuma
+      let suankiResim = resim.getAttribute("src");
+
+      if (suankiResim === "dom_gunduz.png") {
+        // 3. setAttribute: Değeri güncelleme
+        resim.setAttribute("src", "dom_gece.png");
+        resim.setAttribute("alt", "Gece Modu Resmi");
+
+        // Doğrudan erişim (Property Access) ile sınıf değiştirme
+        kart.className = "isik-kapali";
+      } else {
+        resim.setAttribute("src", "dom_gunduz.png");
+        kart.className = "isik-acik";
+      }
+    }
+  }
+
+  function linkiKilitle() {
+    const link = document.getElementById("sosyalLink");
+
+    if (link.hasAttribute("href") && link.getAttribute("href") !== "#") {
+      // 4. removeAttribute: Özniteliği silme
+      link.removeAttribute("href");
+      link.textContent = "Link Devre Dışı";
+      console.log("Link silindi.");
+    } else {
+      // Yeniden ekleme
+      link.setAttribute("href", "https://github.com");
+      link.textContent = "GitHub'a Git";
+      // 5. setAttribute: Yeni özellik ekleme
+      link.setAttribute("target", "_blank");
+    }
+  }
+</script>

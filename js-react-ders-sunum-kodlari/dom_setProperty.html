@@ -1,0 +1,51 @@
+<style>
+  :root {
+    --ana-renk: #3498db;
+    --kutu-boyutu: 100px; /* Varsayılan değer */
+  }
+
+  .box {
+    /* Değişkenleri burada kullanmalısın */
+    width: var(--kutu-boyutu);
+    height: var(--kutu-boyutu);
+    background-color: var(--ana-renk);
+
+    /* Görselleştirme için ek özellikler */
+    margin-top: 20px;
+    border: 1px solid #000;
+  }
+</style>
+<div class="controls">
+  <label>Renk Seç:</label>
+  <input type="color" id="colorPicker" value="#3498db" />
+
+  <label>Boyut:</label>
+  <input type="range" id="sizeSlider" min="50" max="300" value="100" />
+</div>
+
+<div class="box"></div>
+<p id="renkBilgisi"></p>
+
+<script>
+  // :root elementine ulaş (html etiketi)
+  const root = document.documentElement;
+  const colorPicker = document.querySelector("#colorPicker");
+  const sizeSlider = document.querySelector("#sizeSlider");
+
+  // Renk değiştiğinde tetiklenir
+  colorPicker.addEventListener("input", (e) => {
+    const yeniRenk = e.target.value;
+    root.style.setProperty("--ana-renk", yeniRenk);
+  });
+
+  // Slider hareket ettiğinde tetiklenir
+  sizeSlider.addEventListener("input", (e) => {
+    const yeniBoyut = e.target.value + "px";
+    root.style.setProperty("--kutu-boyutu", yeniBoyut);
+  });
+
+  colorPicker.addEventListener("input", (e) => {
+    const mevcutRenk = getComputedStyle(root).getPropertyValue("--ana-renk");
+    document.getElementById("renkBilgisi").innerText = mevcutRenk;
+  });
+</script>

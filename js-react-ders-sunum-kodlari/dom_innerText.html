@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>innerText Örneği</title>
+  </head>
+  <body>
+    <p id="metin">Merhaba <b>Dünya</b></p>
+
+    <button onclick="degistir()">Değiştir</button>
+
+    <script>
+      function degistir() {
+        document.getElementById("metin").innerText = "Yeni içerik eklendi";
+      }
+    </script>
+  </body>
+</html>

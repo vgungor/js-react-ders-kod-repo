@@ -1,0 +1,30 @@
+<ul id="liste"></ul>
+
+<button onclick="ekle()">Listeyi Oluştur</button>
+
+<!-- <ul id="liste-2"></ul> -->
+
+<script>
+  function ekle() {
+    let fragment = document.createDocumentFragment();
+
+    for (let i = 1; i <= 50; i++) {
+      let li = document.createElement("li");
+
+      li.textContent = "Ürün " + i;
+
+      fragment.appendChild(li);
+    }
+
+    document.getElementById("liste").appendChild(fragment);
+  }
+</script>
+
+<!-- <script>
+  for (let i = 0; i < 1000; i++) {
+    let li = document.createElement("li");
+    li.textContent = i;
+
+    document.getElementById("liste-2").appendChild(li);
+  }
+</script> -->

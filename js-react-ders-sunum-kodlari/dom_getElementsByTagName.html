@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>getElementsByTagName Örneği</title>
+    <style>
+      p {
+        color: black;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript getElementsByTagName Örneği</h1>
+
+    <div id="div1">
+      <p>Div 1 - Bu birinci paragraf.</p>
+      <p>Div 1 - Bu ikinci paragraf.</p>
+      <p>Div 1 - Bu üçüncü paragraf.</p>
+    </div>
+    <div id="div2">
+      <p>Div 2 - Bu birinci paragraf.</p>
+      <p>Div 2 - Bu ikinci paragraf.</p>
+      <p>Div 2 - Bu üçüncü paragraf.</p>
+    </div>
+
+    <button onclick="degistir()">Paragrafları Değiştir</button>
+
+    <script>
+      function degistir() {
+        // Sayfadaki tüm p etiketlerini al
+        let paragraflar = document.getElementsByTagName("p");
+
+        // Döngü ile tüm paragrafları değiştir
+        for (let i = 0; i < paragraflar.length; i++) {
+          paragraflar[i].style.color = "blue";
+          paragraflar[i].innerHTML =
+            (i + 1).toString() + " Paragraf değiştirildi. ";
+        }
+      }
+    </script>
+  </body>
+</html>

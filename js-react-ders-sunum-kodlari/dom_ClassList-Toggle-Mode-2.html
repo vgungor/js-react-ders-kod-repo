@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <style>
+      body {
+        background: white;
+        color: black;
+        transition: 0.5s;
+        font-family: Arial;
+        padding: 30px;
+      }
+
+      .dark {
+        background: black;
+        color: white;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+
+  <body id="sayfa">
+    <h1>Dark Mode</h1>
+
+    <button id="btn" onclick="degistir()">Dark Mode Aç</button>
+
+    <script>
+      function degistir() {
+        document.getElementById("sayfa").classList.toggle("dark");
+
+        let buton = document.getElementById("btn");
+
+        if (document.getElementById("sayfa").classList.contains("dark")) {
+          buton.innerText = "Light Mode Aç";
+        } else {
+          buton.innerText = "Dark Mode Aç";
+        }
+      }
+    </script>
+  </body>
+</html>

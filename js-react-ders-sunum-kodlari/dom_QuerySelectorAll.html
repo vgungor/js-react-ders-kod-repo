@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>querySelector ve querySelectorAll</title>
+  </head>
+  <body>
+    <div class="card">Kart 1</div>
+    <div class="card">Kart 2</div>
+    <div class="card">Kart 3</div>
+    <div class="card">Kart 4</div>
+
+    <button id="duzenle-btn">Tümünü Düzenle</button>
+
+    <script>
+      const buton = document.querySelector("#duzenle-btn");
+
+      buton.addEventListener("click", () => {
+        // 1. Adım: Tüm kartları seç (Dönen yapı bir NodeList'tir)
+        const kartlar = document.querySelectorAll(".card");
+
+        // 2. Adım: Liste üzerinde döngüye gir
+        kartlar.forEach((kart, index) => {
+          // Her bir kartın içeriğini ve stilini değiştir
+          kart.textContent = `${index + 1}. Kart Güncellendi!`;
+
+          // Dinamik stil ataması
+          kart.style.backgroundColor = "#3498db";
+          kart.style.color = "white";
+          kart.style.padding = "10px";
+          kart.style.margin = "5px";
+          kart.style.borderRadius = "8px";
+          kart.style.transition = "all 0.3s ease";
+        });
+
+        console.log(`${kartlar.length} adet eleman başarıyla güncellendi.`);
+      });
+    </script>
+  </body>
+</html>

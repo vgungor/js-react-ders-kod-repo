@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kullanıcı Kartları</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      input,
+      button {
+        padding: 8px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .card {
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #f9f9f9;
+        transition: 0.2s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Kullanıcı Listesi</h2>
+
+    <input id="searchInput" placeholder="İsim ara..." />
+    <button id="bizFilterBtn">.biz filtre</button>
+
+    <div id="container" class="container"></div>
+
+    <script>
+      let users = [];
+      let filteredUsers = [];
+      let bizFilterActive = false;
+
+      const container = document.getElementById("container");
+      const searchInput = document.getElementById("searchInput");
+      const bizFilterBtn = document.getElementById("bizFilterBtn");
+
+      // API çağrısı
+      async function getUsers() {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await res.json();
+
+        users = data;
+        filteredUsers = data;
+
+        renderUsers(filteredUsers);
+      }
+
+      // DOM render
+      function renderUsers(list) {
+        container.innerHTML = "";
+
+        list.forEach((user) => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          card.innerHTML = `
+      <h3>${user.name}</h3>
+      <p><b>Kullanıcı:</b> ${user.username}</p>
+      <p><b>Email:</b> ${user.email}</p>
+      <p><b>Şehir:</b> ${user.address.city}</p>
+    `;
+
+          // JS ile hover effect
+          card.addEventListener("mouseenter", () => {
+            card.style.background = "#dff6ff";
+            card.style.transform = "scale(1.05)";
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.background = "#f9f9f9";
+            card.style.transform = "scale(1)";
+          });
+
+          container.appendChild(card);
+        });
+      }
+
+      // Search (isim filtreleme)
+      searchInput.addEventListener("input", (e) => {
+        const value = e.target.value.toLowerCase();
+
+        filteredUsers = users.filter((user) =>
+          user.name.toLowerCase().includes(value),
+        );
+
+        applyFilters();
+      });
+
+      // .biz filtre toggle
+      bizFilterBtn.addEventListener("click", () => {
+        bizFilterActive = !bizFilterActive;
+        applyFilters();
+      });
+
+      // Filtre pipeline
+      function applyFilters() {
+        let result = [...filteredUsers];
+
+        if (bizFilterActive) {
+          result = result.filter((user) => user.email.includes(".biz"));
+        }
+
+        renderUsers(result);
+      }
+
+      // başlangıç
+      getUsers();
+    </script>
+  </body>
+</html>

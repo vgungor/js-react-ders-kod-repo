@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Listeye Eleman Ekleme</title>
+  </head>
+  <body>
+    <ul id="liste"></ul>
+
+    <button onclick="olustur()">Listeye Ekle</button>
+
+    <script>
+      let sayac = 1;
+
+      function olustur() {
+        document.getElementById("liste").innerHTML += `
+        <li>Yeni Ürün ${sayac}</li>
+      `;
+
+        sayac++;
+      }
+    </script>
+  </body>
+</html>

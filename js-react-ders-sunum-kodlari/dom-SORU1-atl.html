@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canlı Koleksiyon Örneği</title>
+
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .tamamlandi {
+        color: green;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Görev Listesi</h2>
+
+    <!-- Input ve Buton -->
+    <input type="text" id="gorevInput" placeholder="Görev giriniz" />
+
+    <button onclick="gorevEkle()">Görev Ekle</button>
+
+    <ul id="liste">
+      <li class="tamamlandi">HTML çalış</li>
+      <li class="tamamlandi">CSS çalış</li>
+      <li class="tamamlandi">JavaScript çalış</li>
+      <li id="gorev4">React öğren</li>
+      <li>Node.js öğren</li>
+    </ul>
+    <p id="sonuc"></p>
+
+    <script>
+      // Yeni görev ekleme fonksiyonu
+      function gorevEkle() {
+        let input = document.getElementById("gorevInput");
+
+        let yeniGorevMetni = input.value;
+
+        // Boş kontrolü
+        if (yeniGorevMetni == "") {
+          alert("Görev giriniz");
+          return;
+        }
+
+        // Yeni li oluştur
+        let li = document.createElement("li");
+
+        li.innerText = yeniGorevMetni;
+
+        // Listeye ekle
+        document.getElementById("liste").appendChild(li);
+
+        // Input temizle
+        input.value = "";
+      }
+
+      // tamamlandi sınıfına sahip elemanlar
+      let tamamlananlar = document.getElementsByClassName("tamamlandi");
+
+      console.log("İlk uzunluk:", tamamlananlar.length);
+      const sonucYazi = document.getElementById("sonuc");
+      sonucYazi.innerText = "Tamamlanan görev sayısı: " + tamamlananlar.length;
+
+      // React öğren görevini tamamlandı yap
+      let gorev4 = document.getElementById("gorev4");
+
+      gorev4.classList.add("tamamlandi");
+
+      console.log("Yeni uzunluk:", tamamlananlar.length);
+      sonucYazi.innerText +=
+        "\nYeni tamamlanan görev sayısı: " + tamamlananlar.length;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>querySelector ve querySelectorAll</title>
+  </head>
+  <body>
+    <h2>Tek Eleman ve Tüm Elemanlar</h2>
+
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+
+    <script>
+      // Sadece ilk li elemanını seçer
+      document.querySelector("li").style.color = "red";
+
+      /*
+            ÇIKTI:
+            Sadece HTML kırmızı olur
+        */
+
+      // Peki hepsini nasıl değiştiririz?
+
+      //   let liste = document.querySelectorAll("li");
+
+      //   // Tüm elemanları dolaş
+      //   liste.forEach(function (eleman) {
+      //     eleman.style.color = "blue";
+      //     eleman.style.fontSize = "24px";
+      //   });
+    </script>
+  </body>
+</html>

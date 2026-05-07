@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form Validation</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 30px;
+      }
+
+      input {
+        display: block;
+        margin-bottom: 15px;
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+
+      .hata {
+        color: red;
+        margin-bottom: 15px;
+      }
+
+      .basarili {
+        color: green;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Kayıt Formu</h1>
+
+    <input type="text" id="ad" placeholder="Adınızı girin" />
+
+    <input type="text" id="email" placeholder="Email girin" />
+
+    <input type="password" id="sifre" placeholder="Şifre girin" />
+
+    <button onclick="kontrolEt()">Gönder</button>
+
+    <div id="sonuc"></div>
+
+    <script>
+      function kontrolEt() {
+        let ad = document.getElementById("ad").value;
+
+        let email = document.getElementById("email").value;
+
+        let sifre = document.getElementById("sifre").value;
+
+        let sonuc = document.getElementById("sonuc");
+
+        sonuc.innerHTML = "";
+
+        // AD KONTROLÜ
+        if (ad === "") {
+          sonuc.innerHTML += `
+          <div class="hata">
+            Ad alanı boş bırakılamaz
+          </div>
+        `;
+        }
+
+        // EMAIL KONTROLÜ
+        if (!email.includes("@") || !email.includes(".")) {
+          sonuc.innerHTML += `
+          <div class="hata">
+            Geçerli bir email girin
+          </div>
+        `;
+        }
+
+        // ŞİFRE KONTROLÜ
+        if (sifre.length < 6) {
+          sonuc.innerHTML += `
+          <div class="hata">
+            Şifre en az 6 karakter olmalı
+          </div>
+        `;
+        }
+
+        // TÜM KONTROLLER GEÇERSE
+        if (
+          ad !== "" &&
+          email.includes("@") &&
+          email.includes(".") &&
+          sifre.length >= 6
+        ) {
+          sonuc.innerHTML = `
+          <div class="basarili">
+            Form başarıyla gönderildi
+          </div>
+        `;
+        }
+      }
+    </script>
+  </body>
+</html>

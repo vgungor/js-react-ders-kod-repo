@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>querySelector Örneği</title>
+
+    <style>
+      .kart {
+        width: 250px;
+        padding: 20px;
+        border: 2px solid gray;
+        border-radius: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>querySelector() Örneği</h1>
+
+    <div class="kart">
+      <h2 id="baslik">Ürün Kartı</h2>
+
+      <p class="fiyat">Fiyat: 2500 TL</p>
+
+      <button>İndirime Gir</button>
+    </div>
+
+    <script>
+      // querySelector ile ilk button seçilir
+      let buton = document.querySelector("button");
+
+      // Butona tıklanınca çalışır
+      buton.addEventListener("click", function () {
+        // id ile eleman seçme
+        let baslik = document.querySelector("#baslik");
+
+        // class ile eleman seçme
+        let fiyat = document.querySelector(".fiyat");
+
+        // div içindeki p seçme
+        let paragraf = document.querySelector(".kart p");
+
+        baslik.innerText = "İndirimli Ürün";
+
+        paragraf.innerText = "Fiyat: 1750 TL";
+
+        fiyat.style.color = "red";
+
+        fiyat.style.fontWeight = "bold";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Eleman Yerleştirme ve Silme</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      .kutu {
+        padding: 10px;
+        margin: 5px 0;
+        background: lightblue;
+      }
+
+      button {
+        margin: 5px;
+        padding: 8px 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Eleman Yerleştirme ve Silme Metotları</h2>
+
+    <div id="alan">
+      <div class="kutu">Kutu 1</div>
+      <div class="kutu">Kutu 2</div>
+    </div>
+
+    <button onclick="sonaEkle()">append()</button>
+
+    <button onclick="basaEkle()">prepend()</button>
+
+    <button onclick="onceEkle()">before()</button>
+
+    <button onclick="sonraEkle()">after()</button>
+
+    <button onclick="sil()">remove()</button>
+
+    <script>
+      const alan = document.getElementById("alan");
+
+      // append()
+      function sonaEkle() {
+        const yeni = document.createElement("div");
+        yeni.className = "kutu";
+        yeni.textContent = "Append ile sona eklendi";
+
+        alan.append(yeni);
+      }
+
+      // prepend()
+      function basaEkle() {
+        const yeni = document.createElement("div");
+        yeni.className = "kutu";
+        yeni.textContent = "Prepend ile başa eklendi";
+
+        alan.prepend(yeni);
+      }
+
+      // before()
+      function onceEkle() {
+        const yeni = document.createElement("div");
+        yeni.className = "kutu";
+        yeni.textContent = "Before ile önce eklendi";
+
+        alan.before(yeni);
+      }
+
+      // after()
+      function sonraEkle() {
+        const yeni = document.createElement("div");
+        yeni.className = "kutu";
+        yeni.textContent = "After ile sonra eklendi";
+
+        alan.after(yeni);
+      }
+
+      // remove()
+      function sil() {
+        const sonKutu = document.querySelector(".kutu:last-child");
+
+        if (sonKutu) {
+          sonKutu.remove();
+        }
+      }
+    </script>
+  </body>
+</html>
