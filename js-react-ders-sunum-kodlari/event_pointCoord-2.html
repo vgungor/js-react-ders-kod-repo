@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Koordinat Alma</title>
+
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="500" height="300"></canvas>
+
+    <p id="sonuc"></p>
+
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const sonuc = document.getElementById("sonuc");
+
+      /* Canvas üzerine tıklama olayını dinle */
+      canvas.addEventListener("click", function (event) {
+        /* Canvas'ın ekrandaki konumu */
+        const rect = canvas.getBoundingClientRect();
+
+        /* Tıklanan noktanın canvas içindeki koordinatı */
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        sonuc.innerHTML = `X: ${x} | Y: ${y}`;
+
+        console.log("X:", x);
+        console.log("Y:", y);
+      });
+    </script>
+  </body>
+</html>

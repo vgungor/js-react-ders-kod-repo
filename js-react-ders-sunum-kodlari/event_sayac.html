@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Sayaç: <span id="deger">0</span></h1>
+  <button id="artir">Artır (+)</button>
+  <button id="azalt">Azalt (-)</button>
+  <button id="sifirla">Sıfırla</button>
+</div>
+
+<script>
+  // Başlangıç değerimiz
+  let sayac = 0;
+
+  // Elementleri seçiyoruz
+  const degerEkrani = document.querySelector("#deger");
+  const artirBtn = document.querySelector("#artir");
+  const azaltBtn = document.querySelector("#azalt");
+  const sifirlaBtn = document.querySelector("#sifirla");
+
+  // --- Event Listeners (Olay Dinleyiciler) ---
+
+  // Artırma İşlemi
+  artirBtn.addEventListener("click", function () {
+    sayac++; // Değişkeni 1 artır
+    guncelle(); // Ekranı güncelle
+  });
+
+  // Azaltma İşlemi
+  azaltBtn.addEventListener("click", function () {
+    sayac--; // Değişkeni 1 azalt
+    guncelle();
+  });
+
+  // Sıfırlama İşlemi
+  sifirlaBtn.addEventListener("click", function () {
+    sayac = 0; // Değişkeni sıfırla
+    guncelle();
+  });
+
+  // Ekrana yazdırma işlemini her seferinde tekrar yazmamak için fonksiyonlaştırdık
+  function guncelle() {
+    degerEkrani.textContent = sayac;
+
+    // Bonus: Sayı negatifse kırmızı, pozitifse yeşil yapalım
+    if (sayac > 0) {
+      degerEkrani.style.color = "green";
+    } else if (sayac < 0) {
+      degerEkrani.style.color = "red";
+    } else {
+      degerEkrani.style.color = "black";
+    }
+  }
+</script>

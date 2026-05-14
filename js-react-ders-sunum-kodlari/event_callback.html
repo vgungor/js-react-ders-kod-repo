@@ -1,0 +1,14 @@
+<input type="text" id="ad" />
+<p id="mesaj"></p>
+
+<script>
+  document.getElementById("ad").addEventListener("keyup", function () {
+    console.log("Klavye tuşuna basıldı");
+    document.getElementById("mesaj").innerText = "Klavye tuşuna basıldı";
+    if (this.value.length > 0) {
+      document.getElementById("mesaj").innerText = `${this.value} yazıldı.`;
+    } else {
+      document.getElementById("mesaj").innerText = "Metin boş.";
+    }
+  });
+</script>

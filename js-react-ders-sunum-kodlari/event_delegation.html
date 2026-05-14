@@ -1,0 +1,41 @@
+<ul id="meyveListesi">
+  <li>Elma</li>
+  <li>Armut</li>
+  <li>Muz</li>
+  <!-- Buraya dinamik olarak yeni meyveler eklenebilir -->
+</ul>
+
+<button id="ekleMeyve">Meyve Ekle</button>
+<script>
+  const meyveListesi = document.getElementById("meyveListesi");
+  const ekleMeyveBtn = document.getElementById("ekleMeyve");
+  /* Yeni meyve ekleme butonuna tıklandığında çalışacak fonksiyon */
+  ekleMeyveBtn.addEventListener("click", function () {
+    const yeniMeyve = ["Çilek", "Kivi", "Portakal", "Üzüm"][
+      Math.floor(Math.random() * 4)
+    ]; // Rastgele bir meyve seçiyoruz
+    if (yeniMeyve) {
+      meyveEkle(yeniMeyve);
+    }
+  });
+  /* Listeye yeni bir meyve ekle */
+  function meyveEkle(meyve) {
+    const li = document.createElement("li");
+    li.textContent = meyve;
+    meyveListesi.appendChild(li);
+  }
+</script>
+
+<script>
+  /* Event Delegation: Listeye tıklanıldığında hangi meyveye tıklandığını göster */
+  meyveListesi.addEventListener("click", function (e) {
+    // e.target: Gerçekten tıklanan elementtir (yani LI)
+    // Sadece LI elementine tıklandığında çalışması için kontrol yapıyoruz:
+    if (e.target && e.target.nodeName === "LI") {
+      alert(e.target.textContent + " seçildi!");
+
+      //Tıklanan meyveyi boyayalım
+      e.target.style.backgroundColor = "yellow";
+    }
+  });
+</script>

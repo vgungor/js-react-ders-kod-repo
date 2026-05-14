@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Alan Çizim Sistemi</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      canvas {
+        border: 2px solid black;
+        cursor: crosshair;
+      }
+
+      #bilgi {
+        margin-top: 15px;
+        font-size: 18px;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Canvas Alan Sınırı Çizme</h2>
+
+    <canvas id="canvas" width="800" height="500"></canvas>
+
+    <br />
+
+    <button id="temizleBtn">Çizgileri Temizle</button>
+
+    <div id="bilgi">Çizim başlatmak için bir noktaya tıklayın</div>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const bilgi = document.getElementById("bilgi");
+      const temizleBtn = document.getElementById("temizleBtn");
+
+      /* Alanlar */
+      const alanlar = [
+        {
+          isim: "A Bölgesi",
+          x: 50,
+          y: 50,
+          w: 250,
+          h: 180,
+          renk: "#d0ebff",
+        },
+
+        {
+          isim: "B Bölgesi",
+          x: 350,
+          y: 50,
+          w: 350,
+          h: 150,
+          renk: "#d3f9d8",
+        },
+
+        {
+          isim: "C Bölgesi",
+          x: 100,
+          y: 280,
+          w: 500,
+          h: 170,
+          renk: "#ffe8cc",
+        },
+      ];
+
+      /* Çizgileri tut */
+      let cizgiler = [];
+
+      /* Çizim başlangıcı */
+      let baslangicNoktasi = null;
+
+      /* Canvas çiz */
+      function cizCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        /* Alanları çiz */
+        alanlar.forEach((alan) => {
+          ctx.fillStyle = alan.renk;
+          ctx.fillRect(alan.x, alan.y, alan.w, alan.h);
+
+          ctx.strokeStyle = "black";
+          ctx.lineWidth = 2;
+
+          ctx.strokeRect(alan.x, alan.y, alan.w, alan.h);
+
+          ctx.fillStyle = "black";
+          ctx.font = "20px Arial";
+
+          ctx.fillText(alan.isim, alan.x + 10, alan.y + 30);
+        });
+
+        /* Çizgileri çiz */
+        cizgiler.forEach((cizgi) => {
+          ctx.beginPath();
+
+          ctx.moveTo(cizgi.x1, cizgi.y1);
+          ctx.lineTo(cizgi.x2, cizgi.y2);
+
+          ctx.strokeStyle = "red";
+          ctx.lineWidth = 3;
+
+          ctx.stroke();
+        });
+      }
+
+      cizCanvas();
+
+      /* Alan bul */
+      function alanBul(x, y) {
+        for (let alan of alanlar) {
+          if (
+            x >= alan.x &&
+            x <= alan.x + alan.w &&
+            y >= alan.y &&
+            y <= alan.y + alan.h
+          ) {
+            return alan;
+          }
+        }
+
+        return null;
+      }
+
+      /* Mouse click */
+      canvas.addEventListener("click", function (event) {
+        const rect = canvas.getBoundingClientRect();
+
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        const alan = alanBul(mouseX, mouseY);
+
+        if (!alan) {
+          bilgi.innerHTML = "Tanımlı alan dışında işlem yapılamaz";
+          return;
+        }
+
+        /*
+        İlk tıklama:
+        başlangıç noktası seç
+    */
+        if (!baslangicNoktasi) {
+          baslangicNoktasi = {
+            x: mouseX,
+            y: mouseY,
+            alan: alan.isim,
+          };
+
+          bilgi.innerHTML = `
+            Başlangıç noktası seçildi
+            <br>
+            Alan: ${alan.isim}
+        `;
+        } else {
+          /*
+            Aynı alan içinde mi?
+        */
+          if (baslangicNoktasi.alan !== alan.isim) {
+            bilgi.innerHTML = `
+                Çizgi sadece aynı alan içinde çizilebilir
+            `;
+
+            baslangicNoktasi = null;
+            return;
+          }
+
+          /*
+            Çizgiyi kaydet
+        */
+          cizgiler.push({
+            x1: baslangicNoktasi.x,
+            y1: baslangicNoktasi.y,
+
+            x2: mouseX,
+            y2: mouseY,
+
+            alan: alan.isim,
+          });
+
+          bilgi.innerHTML = `
+            Çizgi çizildi
+            <br>
+            Alan: ${alan.isim}
+        `;
+
+          baslangicNoktasi = null;
+
+          cizCanvas();
+        }
+      });
+
+      /* Temizle */
+      temizleBtn.addEventListener("click", function () {
+        cizgiler = [];
+
+        baslangicNoktasi = null;
+
+        bilgi.innerHTML = "Tüm çizgiler temizlendi";
+
+        cizCanvas();
+      });
+    </script>
+  </body>
+</html>

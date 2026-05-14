@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Bölge Tespiti</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      canvas {
+        border: 2px solid black;
+      }
+
+      #bilgi {
+        margin-top: 15px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+
+    <div id="bilgi">Bölge bilgisi burada görünecek</div>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      const bilgi = document.getElementById("bilgi");
+
+      /*
+    Alanları tanımla
+    x, y = başlangıç noktası
+    w = genişlik
+    h = yükseklik
+*/
+
+      const alanlar = [
+        {
+          isim: "Sol Üst Kare",
+          x: 0,
+          y: 0,
+          w: 200,
+          h: 200,
+          renk: "lightblue",
+        },
+
+        {
+          isim: "Sağ Üst Dikdörtgen",
+          x: 200,
+          y: 0,
+          w: 400,
+          h: 150,
+          renk: "lightgreen",
+        },
+
+        {
+          isim: "Sol Alt Dikdörtgen",
+          x: 0,
+          y: 200,
+          w: 250,
+          h: 200,
+          renk: "orange",
+        },
+
+        {
+          isim: "Sağ Alt Kare",
+          x: 400,
+          y: 200,
+          w: 200,
+          h: 200,
+          renk: "pink",
+        },
+      ];
+
+      /* Alanları çiz */
+      alanlar.forEach((alan) => {
+        ctx.fillStyle = alan.renk;
+        ctx.fillRect(alan.x, alan.y, alan.w, alan.h);
+
+        ctx.strokeRect(alan.x, alan.y, alan.w, alan.h);
+
+        ctx.fillStyle = "black";
+        ctx.font = "20px Arial";
+
+        ctx.fillText(alan.isim, alan.x + 20, alan.y + 40);
+      });
+
+      /* Tıklama olayı */
+      canvas.addEventListener("click", function (event) {
+        const rect = canvas.getBoundingClientRect();
+
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        let bulunanAlan = null;
+
+        /* Hangi alan içinde olduğunu bul */
+        alanlar.forEach((alan) => {
+          if (
+            mouseX >= alan.x &&
+            mouseX <= alan.x + alan.w &&
+            mouseY >= alan.y &&
+            mouseY <= alan.y + alan.h
+          ) {
+            bulunanAlan = alan.isim;
+          }
+        });
+
+        if (bulunanAlan) {
+          bilgi.innerHTML = `
+            Tıklanan Alan: <b>${bulunanAlan}</b>
+            <br>
+            Koordinat: X=${Math.floor(mouseX)} 
+            Y=${Math.floor(mouseY)}
+        `;
+        } else {
+          bilgi.innerHTML = `
+            Tanımlı alan dışında tıklandı
+        `;
+        }
+      });
+    </script>
+  </body>
+</html>

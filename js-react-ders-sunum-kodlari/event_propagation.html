@@ -1,0 +1,33 @@
+<h3>Event Propagation (Olay Yayılımı)</h3>
+<div id="disKutu" style="padding: 50px; background: lightgray">
+  DIŞ KUTU (Parent)
+  <div
+    id="icKutu"
+    style="padding: 50px; background: white; border: 1px solid black"
+  >
+    İÇ KUTU (Child)
+    <button id="buton">TIKLA</button>
+  </div>
+</div>
+
+<script>
+  //Bubbling - Kabarcıklanma
+  //Varsayılan yayılma türüdür. Olay, en içten en dışa doğru bir su kabarcığı gibi yükselir.
+  const dis = document.querySelector("#disKutu");
+  const ic = document.querySelector("#icKutu");
+  const btn = document.querySelector("#buton");
+
+  btn.addEventListener("click", () => alert("1. BUTON çalıştı"));
+  ic.addEventListener("click", () => alert("2. İÇ KUTU çalıştı"));
+  dis.addEventListener("click", () => alert("3. DIŞ KUTU çalıştı"));
+  //Butona tıkladığınızda sırasıyla 3 ayrı alert görürsünüz: Buton -> İç Kutu -> Dış Kutu.
+
+  //Olayı Durdurmak: stopPropagation()
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation(); // Yayılmayı burada kes!
+    alert("Sadece buton çalıştı, yukarıya bilgi verilmedi.");
+  });
+
+  // Olay önce buradan başlar (Dış -> İç)
+  dis.addEventListener("click", () => alert("Dış Kutu yakaladı"), true);
+</script>

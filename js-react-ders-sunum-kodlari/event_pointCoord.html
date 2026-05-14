@@ -1,0 +1,16 @@
+<p id="mesaj"></p>
+<button id="button">Tıkla</button>
+<script>
+  const button = document.getElementById("button");
+  button.addEventListener("click", function (e) {
+    console.log("Tıklanan koordinat X: " + e.clientX);
+    console.log("Tıklanan element: " + e.target);
+    document.getElementById("mesaj").innerText =
+      "Tıklanan koordinat X: " +
+      e.clientX +
+      ", Y: " +
+      e.clientY +
+      ", Tıklanan element: " +
+      e.target.tagName;
+  });
+</script>

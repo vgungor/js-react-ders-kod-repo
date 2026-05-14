@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Sürükleyerek Dörtgen Çizme</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+
+      canvas {
+        border: 2px solid black;
+        cursor: crosshair;
+      }
+
+      #bilgi {
+        margin-top: 15px;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Mouse Hareketi ile Canlı Dörtgen Çizme</h2>
+    <canvas id="canvas" width="900" height="500"></canvas>
+
+    <br />
+    <button id="temizleBtn">Temizle</button>
+    <div id="bilgi">Mouse ile sürükleyerek alan seçin</div>
+
+    <script>
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const bilgi = document.getElementById("bilgi");
+      const temizleBtn = document.getElementById("temizleBtn");
+
+      /* Alanlar */
+      const alanlar = [
+        {
+          isim: "A Bölgesi",
+          x: 50,
+          y: 50,
+          w: 300,
+          h: 200,
+          renk: "#d0ebff",
+        },
+
+        {
+          isim: "B Bölgesi",
+          x: 420,
+          y: 60,
+          w: 350,
+          h: 180,
+          renk: "#d3f9d8",
+        },
+
+        {
+          isim: "C Bölgesi",
+          x: 180,
+          y: 300,
+          w: 450,
+          h: 150,
+          renk: "#ffe8cc",
+        },
+      ];
+
+      /* Kalıcı dörtgenler */
+      let dortgenler = [];
+
+      /* Çizim bilgileri */
+      let cizimBasladi = false;
+
+      let baslangicX = 0;
+      let baslangicY = 0;
+
+      let aktifAlan = null;
+
+      let anlikDortgen = null;
+
+      /* Canvas çiz */
+      function cizCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        /* Alanlar */
+        alanlar.forEach((alan) => {
+          ctx.fillStyle = alan.renk;
+
+          ctx.fillRect(alan.x, alan.y, alan.w, alan.h);
+
+          ctx.strokeStyle = "black";
+          ctx.lineWidth = 2;
+
+          ctx.strokeRect(alan.x, alan.y, alan.w, alan.h);
+
+          ctx.fillStyle = "black";
+          ctx.font = "20px Arial";
+
+          ctx.fillText(alan.isim, alan.x + 10, alan.y + 30);
+        });
+
+        /* Kaydedilmiş dörtgenler */
+        dortgenler.forEach((d) => {
+          ctx.fillStyle = "rgba(255,0,0,0.4)";
+
+          ctx.fillRect(d.x, d.y, d.w, d.h);
+
+          ctx.strokeStyle = "red";
+          ctx.lineWidth = 3;
+
+          ctx.strokeRect(d.x, d.y, d.w, d.h);
+        });
+
+        /* Canlı çizim */
+        if (anlikDortgen) {
+          ctx.fillStyle = "rgba(0,0,255,0.3)";
+
+          ctx.fillRect(
+            anlikDortgen.x,
+            anlikDortgen.y,
+            anlikDortgen.w,
+            anlikDortgen.h,
+          );
+
+          ctx.strokeStyle = "blue";
+          ctx.lineWidth = 3;
+
+          ctx.strokeRect(
+            anlikDortgen.x,
+            anlikDortgen.y,
+            anlikDortgen.w,
+            anlikDortgen.h,
+          );
+        }
+      }
+
+      /* Alan bul */
+      function alanBul(x, y) {
+        for (let alan of alanlar) {
+          if (
+            x >= alan.x &&
+            x <= alan.x + alan.w &&
+            y >= alan.y &&
+            y <= alan.y + alan.h
+          ) {
+            return alan;
+          }
+        }
+        return null;
+      }
+      /* Mouse bas */
+      canvas.addEventListener("mousedown", function (event) {
+        const rect = canvas.getBoundingClientRect();
+
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        const alan = alanBul(mouseX, mouseY);
+
+        if (!alan) {
+          bilgi.innerHTML = "Tanımlı alan içinde başlamalısınız";
+
+          return;
+        }
+
+        cizimBasladi = true;
+        baslangicX = mouseX;
+        baslangicY = mouseY;
+        aktifAlan = alan;
+      });
+
+      /* Mouse hareket */
+      canvas.addEventListener("mousemove", function (event) {
+        if (!cizimBasladi) return;
+
+        const rect = canvas.getBoundingClientRect();
+
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        /* Alan dışına çıkma kontrolü */
+        const alan = alanBul(mouseX, mouseY);
+
+        if (!alan || alan.isim !== aktifAlan.isim) {
+          return;
+        }
+
+        const x = Math.min(mouseX, baslangicX);
+        const y = Math.min(mouseY, baslangicY);
+
+        const w = Math.abs(mouseX - baslangicX);
+        const h = Math.abs(mouseY - baslangicY);
+
+        anlikDortgen = {
+          x: x,
+          y: y,
+          w: w,
+          h: h,
+        };
+
+        cizCanvas();
+      });
+
+      /* Mouse bırak */
+      canvas.addEventListener("mouseup", function () {
+        if (!anlikDortgen) {
+          cizimBasladi = false;
+          return;
+        }
+
+        dortgenler.push({
+          ...anlikDortgen,
+          alan: aktifAlan.isim,
+        });
+
+        /* Alan hesap */
+        const dortgenAlan = anlikDortgen.w * anlikDortgen.h;
+
+        const toplamAlan = aktifAlan.w * aktifAlan.h;
+
+        const oran = ((dortgenAlan / toplamAlan) * 100).toFixed(2);
+
+        bilgi.innerHTML = `
+        <b>${aktifAlan.isim}</b> içinde seçim yapıldı
+        <br><br>
+        Dörtgen Alanı: ${Math.floor(dortgenAlan)} px² <br>
+        Toplam Alan: ${toplamAlan} px² <br>
+        Kaplama Oranı:<b>%${oran}</b>
+        `;
+        anlikDortgen = null;
+        cizimBasladi = false;
+
+        cizCanvas();
+      });
+
+      /* Temizle */
+      temizleBtn.addEventListener("click", function () {
+        dortgenler = [];
+
+        anlikDortgen = null;
+
+        cizimBasladi = false;
+
+        bilgi.innerHTML = "Tüm seçimler temizlendi";
+
+        cizCanvas();
+      });
+
+      /* İlk çizim */
+      cizCanvas();
+    </script>
+  </body>
+</html>

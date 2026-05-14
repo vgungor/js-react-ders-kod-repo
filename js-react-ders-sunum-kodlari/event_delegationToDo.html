@@ -1,0 +1,30 @@
+<ul id="todoList">
+  <li>
+    Ödevi yap
+    <button class="sil-btn">Sil</button>
+  </li>
+  <li>
+    Ekmek al
+    <button class="sil-btn">Sil</button>
+  </li>
+</ul>
+<script>
+  const liste = document.querySelector("#todoList");
+
+  liste.addEventListener("click", function (e) {
+    // 1. ADIM: Tıklanan şey gerçekten "sil" butonu mu?
+    // Sadece butona tıklandığında işlem yapması için kontrol koyuyoruz.
+    if (e.target.classList.contains("sil-btn")) {
+      // 2. ADIM: Butonun içinde bulunduğu LI elementini bul
+      const silinecekSatir = e.target.parentElement;
+
+      // 3. ADIM: Satırı DOM'dan kaldır
+      silinecekSatir.remove();
+
+      console.log("Bir görev silindi!");
+    } else if (e.target.tagName === "LI") {
+      // Eğer tıklanan bir LI ise, üzerine çizgi çekelim
+      e.target.style.textDecoration = "line-through";
+    }
+  });
+</script>
